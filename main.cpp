@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 {
     int a = 4;
     int b = 1;
-    int c = 1;
+    int c = 11;
     //Library0 lib;
     //c = lib.add(a, b);
     LibraryStatic0 lib0;
