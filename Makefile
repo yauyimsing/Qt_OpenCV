@@ -197,12 +197,16 @@ Makefile: test.pro ../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/win32-g++/qmake.co
 		../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/qt.prf \
 		../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/resources.prf \
 		../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/moc.prf \
+		../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/win32/opengl.prf \
+		../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/uic.prf \
 		../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/file_copies.prf \
 		../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/testcase_targets.prf \
 		../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/exceptions.prf \
 		../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/yacc.prf \
 		../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/lex.prf \
 		test.pro \
+		../../../Qt/Qt5.7.0/5.7/mingw53_32/lib/Qt5Widgets.prl \
+		../../../Qt/Qt5.7.0/5.7/mingw53_32/lib/Qt5Gui.prl \
 		../../../Qt/Qt5.7.0/5.7/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" -o Makefile test.pro
 ../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -343,12 +347,16 @@ Makefile: test.pro ../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/win32-g++/qmake.co
 ../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/qt.prf:
 ../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/resources.prf:
 ../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/moc.prf:
+../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/win32/opengl.prf:
+../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/uic.prf:
 ../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/file_copies.prf:
 ../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/testcase_targets.prf:
 ../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/exceptions.prf:
 ../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/yacc.prf:
 ../../../Qt/Qt5.7.0/5.7/mingw53_32/mkspecs/features/lex.prf:
 test.pro:
+../../../Qt/Qt5.7.0/5.7/mingw53_32/lib/Qt5Widgets.prl:
+../../../Qt/Qt5.7.0/5.7/mingw53_32/lib/Qt5Gui.prl:
 ../../../Qt/Qt5.7.0/5.7/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" -o Makefile test.pro

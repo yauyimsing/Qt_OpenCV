@@ -3,6 +3,9 @@
  * qiu - 20190105
  */
 
+#include <QApplication>
+#include <QDialog>
+#include <QLabel>
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include <librarystatic0.h>
@@ -32,10 +35,17 @@ int main(int argc, char *argv[])
             waitKey(30);  //延时30ms
 
         }
-        return 0;
-
 /*
 */
     cout << "end..." << endl;
-    return 0;
+    //return 0;
+    QApplication aa(argc, argv);
+    QDialog w;
+    w.resize(300, 300);
+    QLabel label(&w);
+    label.move(120, 120);
+    label.setText("hello kugou");
+    w.show();
+    return aa.exec();
  }
+
