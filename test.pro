@@ -16,3 +16,5 @@ INCLUDEPATH += D:\temp\opencv_mingw\install\include \
 
 LIBS += D:\work\qt\LibraryStatic0\debug\libLibra*.a \
         D:\temp\opencv_mingw\install\x86\mingw\bin\libopencv_*.dll \
+
+RC_ICONS = opencv.ico

@@ -17,13 +17,13 @@ CXXFLAGS      = -pipe -fno-keep-inline-dllexport -O2 -std=gnu++11 -frtti -Wall -
 INCPATH       = -I. -I..\..\..\temp\opencv_mingw\install\include -I..\LibraryStatic0 -I..\..\..\Qt\Qt5.7.0\5.7\mingw53_32\include -I..\..\..\Qt\Qt5.7.0\5.7\mingw53_32\include\QtCore -Irelease -I..\..\..\Qt\Qt5.7.0\5.7\mingw53_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,console -mthreads
-LIBS        =        D:\work\qt\LibraryStatic0\debug\libLibra*.a D:\temp\opencv_mingw\install\x86\mingw\bin\libopencv_*.dll -LD:\Qt\Qt5.7.0\5.7\mingw53_32\lib D:\Qt\Qt5.7.0\5.7\mingw53_32\lib\libQt5Core.a 
+LIBS        =        D:\work\qt\LibraryStatic0\debug\libLibra*.a D:\temp\opencv_mingw\install\x86\mingw\bin\libopencv_*.dll -LD:\Qt\Qt5.7.0\5.7\mingw53_32\lib D:\Qt\Qt5.7.0\5.7\mingw53_32\lib\libQt5Core.a release\test_resource_res.o 
 QMAKE         = D:\Qt\Qt5.7.0\5.7\mingw53_32\bin\qmake.exe
 IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = release\test_resource_res.o
 COPY          = copy /y
 SED           = $(QMAKE) -install sed
 COPY_FILE     = copy /y
@@ -57,8 +57,11 @@ DESTDIR_TARGET = release\test.exe
 first: all
 all: Makefile.Release  $(DESTDIR_TARGET)
 
-$(DESTDIR_TARGET):  $(OBJECTS) 
+$(DESTDIR_TARGET):  $(OBJECTS) release/test_resource_res.o
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
+
+release/test_resource_res.o: test_resource.rc
+	windres -i test_resource.rc -o release\test_resource_res.o --include-dir=. $(DEFINES)
 
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" -o Makefile.Release test.pro
@@ -70,6 +73,7 @@ dist:
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\main.o
+	-$(DEL_FILE) release\test_resource_res.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
