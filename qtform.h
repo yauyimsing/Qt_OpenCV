@@ -2,11 +2,12 @@
 #define QTFORM_H
 
 #include <QWidget>
+#include <opencv2/opencv.hpp>
+using namespace cv;
 
 namespace Ui {
 class QtForm;
 }
-
 class QtForm : public QWidget
 {
     Q_OBJECT
@@ -23,6 +24,8 @@ private:
 
 private:
     void qtSetLayout();
+    void showCapture();
+    QImage toQimage(Mat, QSize);
 };
 
 #endif // QTFORM_H

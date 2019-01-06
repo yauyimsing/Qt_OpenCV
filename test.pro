@@ -11,7 +11,8 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    qtform.cpp
+    qtform.cpp \
+    opencvclass.cpp
 
 INCLUDEPATH += D:\temp\opencv_mingw\install\include \
                     D:\work\qt\LibraryStatic0
@@ -26,4 +27,5 @@ FORMS += \
 
 HEADERS += \
     qtform.h \
-    ui_qtform.h
+    ui_qtform.h \
+    opencvclass.h

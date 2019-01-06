@@ -46,7 +46,7 @@ public:
     {
         if (QtForm->objectName().isEmpty())
             QtForm->setObjectName(QStringLiteral("QtForm"));
-        QtForm->resize(753, 495);
+        QtForm->resize(747, 499);
         widget = new QWidget(QtForm);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setGeometry(QRect(10, 22, 721, 461));
@@ -68,7 +68,6 @@ public:
         verticalLayout->addWidget(label);
 
         horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setSpacing(15);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         label_2 = new QLabel(widget);
         label_2->setObjectName(QStringLiteral("label_2"));
@@ -120,9 +119,6 @@ public:
 
         horizontalLayout_2->addLayout(verticalLayout_2);
 
-#ifndef QT_NO_SHORTCUT
-        label_2->setBuddy(textEdit);
-#endif // QT_NO_SHORTCUT
 
         retranslateUi(QtForm);
 
@@ -133,7 +129,7 @@ public:
     {
         QtForm->setWindowTitle(QApplication::translate("QtForm", "Form", 0));
         label->setText(QApplication::translate("QtForm", "TextLabel", 0));
-        label_2->setText(QApplication::translate("QtForm", "Info(&I)", 0));
+        label_2->setText(QApplication::translate("QtForm", "TextLabel", 0));
         pushButton->setText(QApplication::translate("QtForm", "PushButton", 0));
         pushButton_2->setText(QApplication::translate("QtForm", "PushButton", 0));
     } // retranslateUi
