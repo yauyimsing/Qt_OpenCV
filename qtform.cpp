@@ -15,14 +15,14 @@ QtForm::QtForm(QWidget *parent) :
     ui->setupUi(this);
     //qtSetLayout();
     //【2】循环显示每一帧
-    this->show();
+    //this->show();
     //capture.release();
-    //showCapture();
     OpenCvClass opencv;
     Mat img = opencv.LoadPicture();
     QImage image = toQimage(img, ui->label->size());
     img.release();
     ui->label->setPixmap(QPixmap::fromImage(image));
+    //showCapture();
 }
 
 QtForm::~QtForm()

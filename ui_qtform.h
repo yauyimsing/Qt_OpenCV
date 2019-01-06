@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -28,8 +29,8 @@ QT_BEGIN_NAMESPACE
 class Ui_QtForm
 {
 public:
-    QWidget *widget;
-    QHBoxLayout *horizontalLayout_2;
+    QGridLayout *gridLayout;
+    QGridLayout *gridLayout_2;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QHBoxLayout *horizontalLayout;
@@ -46,18 +47,22 @@ public:
     {
         if (QtForm->objectName().isEmpty())
             QtForm->setObjectName(QStringLiteral("QtForm"));
-        QtForm->resize(747, 499);
-        widget = new QWidget(QtForm);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 22, 721, 461));
-        horizontalLayout_2 = new QHBoxLayout(widget);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        QtForm->resize(768, 540);
+        gridLayout = new QGridLayout(QtForm);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        label = new QLabel(widget);
+        verticalLayout->setSizeConstraint(QLayout::SetFixedSize);
+        label = new QLabel(QtForm);
         label->setObjectName(QStringLiteral("label"));
-        label->setMinimumSize(QSize(500, 0));
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy);
+        label->setMinimumSize(QSize(500, 430));
         QFont font;
         font.setBold(true);
         font.setItalic(true);
@@ -69,13 +74,13 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(QtForm);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setMaximumSize(QSize(11111, 16777215));
 
         horizontalLayout->addWidget(label_2);
 
-        textEdit = new QTextEdit(widget);
+        textEdit = new QTextEdit(QtForm);
         textEdit->setObjectName(QStringLiteral("textEdit"));
         textEdit->setMaximumSize(QSize(11111, 50));
 
@@ -89,15 +94,15 @@ public:
         verticalLayout->setStretch(0, 8);
         verticalLayout->setStretch(1, 1);
 
-        horizontalLayout_2->addLayout(verticalLayout);
+        gridLayout_2->addLayout(verticalLayout, 0, 0, 1, 1);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_2->addItem(horizontalSpacer);
+        gridLayout_2->addItem(horizontalSpacer, 0, 1, 1, 1);
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        pushButton = new QPushButton(widget);
+        pushButton = new QPushButton(QtForm);
         pushButton->setObjectName(QStringLiteral("pushButton"));
 
         verticalLayout_2->addWidget(pushButton);
@@ -106,18 +111,21 @@ public:
 
         verticalLayout_2->addItem(verticalSpacer);
 
-        lineEdit = new QLineEdit(widget);
+        lineEdit = new QLineEdit(QtForm);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
 
         verticalLayout_2->addWidget(lineEdit);
 
-        pushButton_2 = new QPushButton(widget);
+        pushButton_2 = new QPushButton(QtForm);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
 
         verticalLayout_2->addWidget(pushButton_2);
 
 
-        horizontalLayout_2->addLayout(verticalLayout_2);
+        gridLayout_2->addLayout(verticalLayout_2, 0, 2, 1, 1);
+
+
+        gridLayout->addLayout(gridLayout_2, 0, 0, 1, 1);
 
 
         retranslateUi(QtForm);
@@ -129,7 +137,7 @@ public:
     {
         QtForm->setWindowTitle(QApplication::translate("QtForm", "Form", 0));
         label->setText(QApplication::translate("QtForm", "TextLabel", 0));
-        label_2->setText(QApplication::translate("QtForm", "TextLabel", 0));
+        label_2->setText(QApplication::translate("QtForm", "Info(&I)", 0));
         pushButton->setText(QApplication::translate("QtForm", "PushButton", 0));
         pushButton_2->setText(QApplication::translate("QtForm", "PushButton", 0));
     } // retranslateUi

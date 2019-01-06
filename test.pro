@@ -12,7 +12,8 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     qtform.cpp \
-    opencvclass.cpp
+    opencvclass.cpp \
+    mainwindow.cpp
 
 INCLUDEPATH += D:\temp\opencv_mingw\install\include \
                     D:\work\qt\LibraryStatic0
@@ -23,9 +24,15 @@ LIBS += D:\work\qt\LibraryStatic0\debug\libLibra*.a \
 RC_ICONS = opencv.ico
 
 FORMS += \
-    qtform.ui
+    qtform.ui \
+    mainwindow.ui
 
 HEADERS += \
     qtform.h \
     ui_qtform.h \
-    opencvclass.h
+    opencvclass.h \
+    ui_mainwindow.h \
+    mainwindow.h
+
+RESOURCES += \
+    images.qrc
