@@ -6,4 +6,7 @@
     <qresource prefix="/picture">
         <file>images/png/face.png</file>
     </qresource>
+    <qresource prefix="/logos">
+        <file>images/logo.png</file>
+    </qresource>
 </RCC>

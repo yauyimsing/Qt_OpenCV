@@ -11,8 +11,13 @@ public:
     OpenCvClass();
 private:
     const char* imgPath = "D:\\picture\\en.jpg";
+    double startDuration;
+    double endDuration;
 public:
     Mat LoadPicture();
+    void tickStart();
+    void tickEnd();
+    double getDuration();
 };
 
 #endif // OPENCVCLASS_H

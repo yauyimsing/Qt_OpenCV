@@ -26,6 +26,7 @@ private:
     void qtSetLayout();
     void showCapture();
     QImage toQimage(Mat, QSize);
+    QImage cvMat2QImage(const cv::Mat &mat);
 };
 
 #endif // QTFORM_H

@@ -13,13 +13,16 @@ TEMPLATE = app
 SOURCES += main.cpp \
     qtform.cpp \
     opencvclass.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    opencvfunction.cpp
 
 INCLUDEPATH += D:\temp\opencv_mingw\install\include \
-                    D:\work\qt\LibraryStatic0
+                    D:\work\qt\LibraryStatic0 \
+                    D:\work\qt\library0
 
 LIBS += D:\work\qt\LibraryStatic0\debug\libLibra*.a \
         D:\temp\opencv_mingw\install\x86\mingw\bin\libopencv_*.dll \
+
 
 RC_ICONS = opencv.ico
 
@@ -32,7 +35,8 @@ HEADERS += \
     ui_qtform.h \
     opencvclass.h \
     ui_mainwindow.h \
-    mainwindow.h
+    mainwindow.h \
+    opencvfunction.h
 
 RESOURCES += \
     images.qrc

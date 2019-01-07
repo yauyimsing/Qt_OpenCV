@@ -8,15 +8,18 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include <librarystatic0.h>
+#include "library0.h"
 #include "qtform.h"
 #include "mainwindow.h"
 
 using namespace std;
 using namespace cv;
+void initilize();
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    initilize();
 
     MainWindow w;
     w.show();
@@ -31,9 +34,10 @@ int main(int argc, char *argv[])
 void initilize()
 {    int a = 4;
      int b = 1;
-     int c = 11;
+     int c = 121;
      LibraryStatic0 lib0;
      c = lib0.StaticAdd(a,b);
+
      cout << "start..." << "c: " << c << endl;
  /*
          VideoCapture capture(0);
