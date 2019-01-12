@@ -15,6 +15,7 @@ class QtForm : public QWidget
 public:
     explicit QtForm(QWidget *parent = 0);
     ~QtForm();
+    static QImage cvMat2QImage(const cv::Mat &mat);
 
 private slots:
     void on_pushButton_clicked();
@@ -25,8 +26,6 @@ private:
 private:
     void qtSetLayout();
     void showCapture();
-    QImage toQimage(Mat, QSize);
-    QImage cvMat2QImage(const cv::Mat &mat);
 };
 
 #endif // QTFORM_H

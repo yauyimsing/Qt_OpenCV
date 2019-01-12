@@ -5,6 +5,7 @@
 #include <QTextEdit>
 #include <QMdiSubWindow>
 #include "qtform.h"
+#include "showdialog.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -47,4 +48,10 @@ void MainWindow::on_actionShow_triggered()
     child->setWindowTitle("picture sub-window");
     child->resize(width + 100, height + 100);
     child->show();
+}
+
+void MainWindow::on_actionDialog_triggered()
+{
+    ShowDialog* dialog = new ShowDialog(this);
+    dialog->show();
 }

@@ -46,6 +46,7 @@
      <string>Option</string>
     </property>
     <addaction name="actionShow"/>
+    <addaction name="actionDialog"/>
    </widget>
    <addaction name="menuFile_F"/>
    <addaction name="menuEdit_E"/>
@@ -64,6 +65,7 @@
    </attribute>
    <addaction name="actionOpen_O"/>
    <addaction name="actionShow"/>
+   <addaction name="actionDialog"/>
   </widget>
   <action name="actionNew_N">
    <property name="icon">
@@ -85,6 +87,11 @@
   <action name="actionShow">
    <property name="text">
     <string>Show</string>
+   </property>
+  </action>
+  <action name="actionDialog">
+   <property name="text">
+    <string>Dialog</string>
    </property>
   </action>
  </widget>

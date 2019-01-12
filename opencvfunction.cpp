@@ -1,5 +1,7 @@
 #include "opencvfunction.h"
+#include <iostream>
 
+using namespace std;
 namespace opencvfun
 {
     void salt(Mat &image, int n)
@@ -42,7 +44,7 @@ namespace opencvfun
         }
     }
 
-    void getColorChannel(const Mat image, Mat &result, int channel)
+    void getColorChannel(Mat image, Mat &result, int channel)
     {
         result.create(image.rows, image.cols, image.type());
         return;
@@ -52,6 +54,7 @@ namespace opencvfun
         }
         else if(image.channels() == 3)
         {
+            cv::Mat_<cv::Vec3b>::iterator it = image.begin<cv::Vec3b>();
             //cv::Mat Iterator_<cv::Vec3b> it = image.begin<cv::Vec3b>();
             //cv::Mat_<cv::Vec3b> itend = image.end<cv::Vec3b>();
             result.create(image.rows, image.cols, CV_8UC1);
@@ -124,7 +127,47 @@ namespace opencvfun
         }
         result = image.clone();
         Mat imageROI = result(Rect(0, 0, logoImage.cols, logoImage.rows));
+        /*
+         * by mask method
+        Mat mask = imread(logo, 0);
+        logoImage.copyTo(imageROI, mask);
+        return;
+        */
         cv::addWeighted(imageROI, 1.0, logoImage, 0.2, 0, imageROI);
+    }
+
+    void ColorDetector(Mat& image, Mat& result, Vec3b target, int minDist)
+    {
+        //cout << "0:" << target[0] << " 1:" << target[1] << " 2:" << target[2] << endl;
+        result.create(image.rows, image.cols, CV_8U);
+        cv::Mat_<cv::Vec3b>::const_iterator it = image.begin<cv::Vec3b>();
+        cv::Mat_<cv::Vec3b>::const_iterator itend = image.end<cv::Vec3b>();
+        cv::Mat_<uchar>::iterator itout = result.begin<uchar>();
+        int size = itend - it;
+        cout << "end: " << itend.ptr << "size:" << itend - it << endl;
+        int i = 0;
+        for (; it != itend; it++, itout++)
+        {
+            //cout << "it: " << it.ptr << endl;
+            //cout << "times: " << size - i++ << endl;
+            if (getDistance(target, *it) < minDist)
+            {
+                *itout = 255;
+            }
+            else
+            {
+                *itout = 0;
+            }
+        }
+    }
+
+    int getDistance(const Vec3b & target, const Vec3b & color)
+    {
+        int value = abs(color[0] - target[0])
+            + abs(color[1] - target[1])
+            + abs(color[2] - target[2]);
+        //cout << "v: " << value << endl;
+        return value;
     }
 
 }

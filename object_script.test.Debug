@@ -1,0 +1,14 @@
+INPUT(
+./debug\main.o
+./debug\qtform.o
+./debug\opencvclass.o
+./debug\mainwindow.o
+./debug\opencvfunction.o
+./debug\colordetectcontroller.o
+./debug\colordetector.o
+./debug\showdialog.o
+./debug\qrc_images.o
+./debug\moc_qtform.o
+./debug\moc_mainwindow.o
+./debug\moc_showdialog.o
+);

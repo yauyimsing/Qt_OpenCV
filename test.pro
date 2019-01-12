@@ -14,7 +14,10 @@ SOURCES += main.cpp \
     qtform.cpp \
     opencvclass.cpp \
     mainwindow.cpp \
-    opencvfunction.cpp
+    opencvfunction.cpp \
+    colordetectcontroller.cpp \
+    colordetector.cpp \
+    showdialog.cpp
 
 INCLUDEPATH += D:\temp\opencv_mingw\install\include \
                     D:\work\qt\LibraryStatic0 \
@@ -28,7 +31,8 @@ RC_ICONS = opencv.ico
 
 FORMS += \
     qtform.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    showdialog.ui
 
 HEADERS += \
     qtform.h \
@@ -36,7 +40,11 @@ HEADERS += \
     opencvclass.h \
     ui_mainwindow.h \
     mainwindow.h \
-    opencvfunction.h
+    opencvfunction.h \
+    colordetectcontroller.h \
+    colordetector.h \
+    showdialog.h \
+    ui_showdialog.h
 
 RESOURCES += \
     images.qrc

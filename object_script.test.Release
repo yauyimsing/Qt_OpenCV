@@ -1,0 +1,14 @@
+INPUT(
+./release\main.o
+./release\qtform.o
+./release\opencvclass.o
+./release\mainwindow.o
+./release\opencvfunction.o
+./release\colordetectcontroller.o
+./release\colordetector.o
+./release\showdialog.o
+./release\qrc_images.o
+./release\moc_qtform.o
+./release\moc_mainwindow.o
+./release\moc_showdialog.o
+);
