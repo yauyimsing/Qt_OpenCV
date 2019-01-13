@@ -24,6 +24,7 @@ private slots:
     void on_actionNew_N_triggered();
     void on_actionShow_triggered();
     void on_actionDialog_triggered();
+    void on_actionViewForm_triggered();
 };
 
 #endif // MAINWINDOW_H

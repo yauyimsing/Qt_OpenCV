@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>721</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -48,9 +48,16 @@
     <addaction name="actionShow"/>
     <addaction name="actionDialog"/>
    </widget>
+   <widget class="QMenu" name="menuForm">
+    <property name="title">
+     <string>Form</string>
+    </property>
+    <addaction name="actionViewForm"/>
+   </widget>
    <addaction name="menuFile_F"/>
    <addaction name="menuEdit_E"/>
    <addaction name="menuStart_S"/>
+   <addaction name="menuForm"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -92,6 +99,11 @@
   <action name="actionDialog">
    <property name="text">
     <string>Dialog</string>
+   </property>
+  </action>
+  <action name="actionViewForm">
+   <property name="text">
+    <string>ViewForm</string>
    </property>
   </action>
  </widget>

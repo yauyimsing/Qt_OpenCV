@@ -19,7 +19,7 @@ public:
     int getColorDistanceThreshold() const;
     void setTargetColor(unsigned char red, unsigned char green, unsigned char blue);
     void getTargetColor(unsigned char& red, unsigned char& green, unsigned char& blue);
-    bool setInputImage(std::string filename);
+    bool setInputImage(std::string filename, int flags = IMREAD_COLOR);
     const Mat getInputImage() const;
     void process();
     const Mat getLastResult() const;

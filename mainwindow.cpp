@@ -6,6 +6,7 @@
 #include <QMdiSubWindow>
 #include "qtform.h"
 #include "showdialog.h"
+#include "viewform.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -54,4 +55,16 @@ void MainWindow::on_actionDialog_triggered()
 {
     ShowDialog* dialog = new ShowDialog(this);
     dialog->show();
+}
+
+void MainWindow::on_actionViewForm_triggered()
+{
+    ViewForm* viewForm = new ViewForm(this);
+    viewForm->imageRead("D:\\picture\\en.jpg");
+    int height = viewForm->height();
+    int width = viewForm->width();
+    QMdiSubWindow* child = ui->mdiArea->addSubWindow(viewForm);
+    child->setWindowTitle("picture sub-window");
+    child->resize(width + 100, height + 100);
+    child->show();
 }

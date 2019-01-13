@@ -17,7 +17,10 @@ SOURCES += main.cpp \
     opencvfunction.cpp \
     colordetectcontroller.cpp \
     colordetector.cpp \
-    showdialog.cpp
+    showdialog.cpp \
+    histogram1d.cpp \
+    viewform.cpp \
+    colorhistogram.cpp
 
 INCLUDEPATH += D:\temp\opencv_mingw\install\include \
                     D:\work\qt\LibraryStatic0 \
@@ -32,7 +35,8 @@ RC_ICONS = opencv.ico
 FORMS += \
     qtform.ui \
     mainwindow.ui \
-    showdialog.ui
+    showdialog.ui \
+    viewform.ui
 
 HEADERS += \
     qtform.h \
@@ -44,7 +48,10 @@ HEADERS += \
     colordetectcontroller.h \
     colordetector.h \
     showdialog.h \
-    ui_showdialog.h
+    ui_showdialog.h \
+    histogram1d.h \
+    viewform.h \
+    colorhistogram.h
 
 RESOURCES += \
     images.qrc

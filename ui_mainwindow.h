@@ -32,6 +32,7 @@ public:
     QAction *actionOpen_O;
     QAction *actionShow;
     QAction *actionDialog;
+    QAction *actionViewForm;
     QWidget *centralwidget;
     QGridLayout *gridLayout;
     QMdiArea *mdiArea;
@@ -39,6 +40,7 @@ public:
     QMenu *menuFile_F;
     QMenu *menuEdit_E;
     QMenu *menuStart_S;
+    QMenu *menuForm;
     QStatusBar *statusbar;
     QToolBar *toolBar;
 
@@ -46,7 +48,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(800, 600);
+        MainWindow->resize(800, 721);
         actionNew_N = new QAction(MainWindow);
         actionNew_N->setObjectName(QStringLiteral("actionNew_N"));
         QIcon icon;
@@ -58,6 +60,8 @@ public:
         actionShow->setObjectName(QStringLiteral("actionShow"));
         actionDialog = new QAction(MainWindow);
         actionDialog->setObjectName(QStringLiteral("actionDialog"));
+        actionViewForm = new QAction(MainWindow);
+        actionViewForm->setObjectName(QStringLiteral("actionViewForm"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
@@ -77,6 +81,8 @@ public:
         menuEdit_E->setObjectName(QStringLiteral("menuEdit_E"));
         menuStart_S = new QMenu(menubar);
         menuStart_S->setObjectName(QStringLiteral("menuStart_S"));
+        menuForm = new QMenu(menubar);
+        menuForm->setObjectName(QStringLiteral("menuForm"));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QStringLiteral("statusbar"));
@@ -88,10 +94,12 @@ public:
         menubar->addAction(menuFile_F->menuAction());
         menubar->addAction(menuEdit_E->menuAction());
         menubar->addAction(menuStart_S->menuAction());
+        menubar->addAction(menuForm->menuAction());
         menuFile_F->addAction(actionNew_N);
         menuFile_F->addAction(actionOpen_O);
         menuStart_S->addAction(actionShow);
         menuStart_S->addAction(actionDialog);
+        menuForm->addAction(actionViewForm);
         toolBar->addAction(actionOpen_O);
         toolBar->addAction(actionShow);
         toolBar->addAction(actionDialog);
@@ -111,9 +119,11 @@ public:
         actionOpen_O->setText(QApplication::translate("MainWindow", "Open(O)", 0));
         actionShow->setText(QApplication::translate("MainWindow", "Show", 0));
         actionDialog->setText(QApplication::translate("MainWindow", "Dialog", 0));
+        actionViewForm->setText(QApplication::translate("MainWindow", "ViewForm", 0));
         menuFile_F->setTitle(QApplication::translate("MainWindow", "File(&F)", 0));
         menuEdit_E->setTitle(QApplication::translate("MainWindow", "Edit(&E)", 0));
         menuStart_S->setTitle(QApplication::translate("MainWindow", "Option", 0));
+        menuForm->setTitle(QApplication::translate("MainWindow", "Form", 0));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0));
     } // retranslateUi
 

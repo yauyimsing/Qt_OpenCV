@@ -23,12 +23,11 @@ QtForm::QtForm(QWidget *parent) :
     Mat img = opencv.LoadPicture();
     Mat result;
     ColorDetector detector;
-    detector.setColorDistanceThreshold(70);
     result = detector.process(img);
     QImage image = cvMat2QImage(result);
     image = image.scaled(ui->label->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     ui->label->setPixmap(QPixmap::fromImage(image));
-    //showCapture();
+    showCapture();
 }
 
 QtForm::~QtForm()

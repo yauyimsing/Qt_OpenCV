@@ -7,8 +7,12 @@ INPUT(
 ./debug\colordetectcontroller.o
 ./debug\colordetector.o
 ./debug\showdialog.o
+./debug\histogram1d.o
+./debug\viewform.o
+./debug\colorhistogram.o
 ./debug\qrc_images.o
 ./debug\moc_qtform.o
 ./debug\moc_mainwindow.o
 ./debug\moc_showdialog.o
+./debug\moc_viewform.o
 );

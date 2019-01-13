@@ -2,6 +2,7 @@
 #include "ui_showdialog.h"
 #include "qtform.h"
 #include <iostream>
+#include "histogram1d.h"
 
 using namespace std;
 
@@ -21,12 +22,18 @@ ShowDialog::~ShowDialog()
 void ShowDialog::showEvent(QShowEvent *)
 {
     ColorDetectController::getInstance()
-            ->setInputImage("D:\\picture\\en.jpg");
+            ->setInputImage("D:\\picture\\en.jpg", IMREAD_GRAYSCALE);
     Mat image = ColorDetectController::getInstance()
             ->getInputImage();
     if(!image.empty())
     {
         displayMat(image);
+        Histogram1D h;
+        MatND histo = h.getHistogram(image);
+        for(int i = 0; i < 256; i++)
+        {
+            cout << "value" << i << "=" << histo.at<float>(i) << endl;
+        }
     }
 }
 
