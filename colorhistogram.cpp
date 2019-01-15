@@ -1,61 +1,5 @@
 #include "colorhistogram.h"
 
-MatND ColorHistogram::getHistogram(const Mat &image)
-{
-    MatND hist;
-    cv::calcHist(&image,
-                 1,
-                 channels,
-                 Mat(),
-                 hist,
-                 3,
-                 histSize,
-                 ranges);
-    return hist;
-}
-
-SparseMat ColorHistogram::getSparseHistogram(const Mat &image)
-{
-    SparseMat hist(3, histSize, CV_32F);
-    calcHist(&image,
-             1,
-             channels,
-             Mat(),
-             hist,
-             3,
-             histSize,
-             ranges);
-    return hist;
-}
-
-Mat ColorHistogram::stretch(const Mat &image, int minValue)
-{
-    MatND hist = getHistogram(image);
-    int imin = 0;
-    for(; imin < histSize[0]; imin++)
-    {
-        cout << hist.at<float>(imin) << endl;
-    }
-}
-Mat ColorHistogram::getHistogramImage(const Mat &image)
-{
-    return image;
-    MatND hist = getHistogram(image);
-    double maxVal = 0;
-    double minVal = 0;
-    minMaxLoc(hist, &minVal, &maxVal, 0, 0);
-    Mat histImg(histSize[0], histSize[0], CV_8U, Scalar(255));
-    int hpt = static_cast<int>(0.9*histSize[0]);
-    for(int h=0; h < histSize[0]; h++)
-    {
-        float binVal = hist.at<float>(h);
-        int intensity = static_cast<int>(binVal*hpt/maxVal);
-        line(histImg, Point(h, histSize[0]),
-                Point(h, histSize[0] - intensity),
-                Scalar::all(0));
-    }
-    return histImg;
-}
 ColorHistogram::ColorHistogram()
 {
     histSize[0] = histSize[1] = histSize[2] = 256;
@@ -67,4 +11,128 @@ ColorHistogram::ColorHistogram()
     channels[0] = 0;
     channels[1] = 1;
     channels[2] = 2;
+}
+
+Mat ColorHistogram::getHistogram(const Mat &image)
+{
+    MatND hist;
+    hranges[0] = 0.0;
+    hranges[1] = 255.0;
+    channels[0] = 0;
+    channels[1] = 1;
+    channels[2] = 2;
+    calcHist(&image,
+             1,
+             channels,
+             Mat(),
+             hist,
+             3,
+             histSize,
+             ranges);
+    return hist;
+}
+cv::SparseMat ColorHistogram::getSparseHistogram(const cv::Mat &image) {
+
+        cv::SparseMat hist(3,histSize,CV_32F);
+
+        // BGR color histogram
+        hranges[0]= 0.0;    // BRG range
+        hranges[1]= 255.0;
+        channels[0]= 0;		// the three channels
+        channels[1]= 1;
+        channels[2]= 2;
+
+        // Compute histogram
+        cv::calcHist(&image,
+            1,			// histogram of 1 image only
+            channels,	// the channel used
+            cv::Mat(),	// no mask is used
+            hist,		// the resulting histogram
+            3,			// it is a 3D histogram
+            histSize,	// number of bins
+            ranges		// pixel value range
+        );
+
+        return hist;
+    }
+// Computes the 2D ab histogram.
+// BGR source image is converted to Lab
+cv::MatND ColorHistogram::getabHistogram(const cv::Mat &image) {
+
+    cv::MatND hist;
+
+    // Convert to Lab color space
+    cv::Mat lab;
+    cv::cvtColor(image, lab, CV_BGR2Lab);
+
+    // Prepare arguments for a 2D color histogram
+    hranges[0]= -128.0;
+    hranges[1]= 127.0;
+    channels[0]= 1; // the two channels used are ab
+    channels[1]= 2;
+
+    // Compute histogram
+    cv::calcHist(&lab,
+        1,			// histogram of 1 image only
+        channels,	// the channel used
+        cv::Mat(),	// no mask is used
+        hist,		// the resulting histogram
+        2,			// it is a 2D histogram
+        histSize,	// number of bins
+        ranges		// pixel value range
+    );
+
+    return hist;
+}
+
+// Computes the 1D Hue histogram with a mask.
+// BGR source image is converted to HSV
+cv::MatND ColorHistogram::getHueHistogram(const cv::Mat &image) {
+
+    cv::MatND hist;
+
+    // Convert to Lab color space
+    cv::Mat hue;
+    cv::cvtColor(image, hue, CV_BGR2HSV);
+
+    // Prepare arguments for a 1D hue histogram
+    hranges[0]= 0.0;
+    hranges[1]= 180.0;
+    channels[0]= 0; // the hue channel
+
+    // Compute histogram
+    cv::calcHist(&hue,
+        1,			// histogram of 1 image only
+        channels,	// the channel used
+        cv::Mat(),	// no mask is used
+        hist,		// the resulting histogram
+        1,			// it is a 1D histogram
+        histSize,	// number of bins
+        ranges		// pixel value range
+    );
+
+    return hist;
+}
+
+cv::Mat ColorHistogram::colorReduce(const cv::Mat &image, int div) {
+
+  int n= static_cast<int>(log(static_cast<double>(div))/log(2.0));
+  // mask used to round the pixel value
+  uchar mask= 0xFF<<n; // e.g. for div=16, mask= 0xF0
+
+  cv::Mat_<cv::Vec3b>::const_iterator it= image.begin<cv::Vec3b>();
+  cv::Mat_<cv::Vec3b>::const_iterator itend= image.end<cv::Vec3b>();
+
+  // Set output image (always 1-channel)
+  cv::Mat result(image.rows,image.cols,image.type());
+  cv::Mat_<cv::Vec3b>::iterator itr= result.begin<cv::Vec3b>();
+
+  for ( ; it!= itend; ++it, ++itr) {
+
+    (*itr)[0]= ((*it)[0]&mask) + div/2;
+    (*itr)[1]= ((*it)[1]&mask) + div/2;
+    (*itr)[2]= ((*it)[2]&mask) + div/2;
+  }
+
+  return result;
 }

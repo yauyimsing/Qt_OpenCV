@@ -21,6 +21,7 @@ public:
     Mat stretch(const Mat& image, int minValue = 0);
     Mat applyLookUp(const Mat& image);
     Mat applyLookUp(const Mat& image, const Mat& lookup);
+    void hCalcBackProject(const Mat& image, const Mat &imageROI, Mat &result);
 
 };
 

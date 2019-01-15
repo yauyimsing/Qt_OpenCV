@@ -1,5 +1,6 @@
 #include "opencvfunction.h"
 #include <iostream>
+#include "histogram1d.h"
 
 using namespace std;
 namespace opencvfun
@@ -168,6 +169,11 @@ namespace opencvfun
             + abs(color[2] - target[2]);
         //cout << "v: " << value << endl;
         return value;
+    }
+
+    Mat getProbilityMat(const Mat &image)
+    {
+
     }
 
 }

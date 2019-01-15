@@ -20,11 +20,15 @@ SOURCES += main.cpp \
     showdialog.cpp \
     histogram1d.cpp \
     viewform.cpp \
-    colorhistogram.cpp
+    colorhistogram.cpp \
+    cmdaction.cpp \
+    imagelabel.cpp \
+    contentfinder.cpp
 
 INCLUDEPATH += D:\temp\opencv_mingw\install\include \
                     D:\work\qt\LibraryStatic0 \
-                    D:\work\qt\library0
+                    D:\work\qt\library0 \
+                    $$PWD\include
 
 LIBS += D:\work\qt\LibraryStatic0\debug\libLibra*.a \
         D:\temp\opencv_mingw\install\x86\mingw\bin\libopencv_*.dll \
@@ -51,7 +55,11 @@ HEADERS += \
     ui_showdialog.h \
     histogram1d.h \
     viewform.h \
-    colorhistogram.h
+    colorhistogram.h \
+    cmdaction.h \
+    imagelabel.h \
+    ui_viewform.h \
+    contentfinder.h
 
 RESOURCES += \
     images.qrc

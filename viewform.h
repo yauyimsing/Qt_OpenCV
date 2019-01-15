@@ -10,6 +10,7 @@
 #include <QKeyEvent>
 #include <opencv2/opencv.hpp>
 #include <iostream>
+#include "imagelabel.h"
 using namespace std;
 using namespace cv;
 namespace Ui {
@@ -29,18 +30,22 @@ private:
     Mat result;
     Mat imageROI;
     Ui::ViewForm *ui;
+    ImageLabel* imageLabel;
     QPoint mouseDownPoint, mouseUpPoint, mouseMovePoint;
     void showEvent(QShowEvent * event);
-    void displayMat(Mat& image);
-    void histogram();
     void initilize();
     void paintEvent(QPaintEvent *event);
-    void mousePressEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
-    void draw();
 public:
-    void imageRead(string filename);
+    void imageRead(string filename)
+    {
+        image = imread(filename, 0);
+        int roiWidth, roiHeight;
+        roiHeight = roiWidth = 100;
+        imageROI = image(Rect(image.rows/2,
+                              image.cols/2,
+                              roiHeight,
+                              roiWidth));
+    }
 };
 
 #endif // VIEWFORM_H

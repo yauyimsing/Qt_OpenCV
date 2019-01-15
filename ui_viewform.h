@@ -15,7 +15,6 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,21 +22,20 @@ QT_BEGIN_NAMESPACE
 class Ui_ViewForm
 {
 public:
-    QGridLayout *gridLayout;
-    QLabel *textLabelImage;
+    QGridLayout *gridLayout_2;
+    QGridLayout *gridLayoutImage;
 
     void setupUi(QWidget *ViewForm)
     {
         if (ViewForm->objectName().isEmpty())
             ViewForm->setObjectName(QStringLiteral("ViewForm"));
         ViewForm->resize(606, 486);
-        gridLayout = new QGridLayout(ViewForm);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        textLabelImage = new QLabel(ViewForm);
-        textLabelImage->setObjectName(QStringLiteral("textLabelImage"));
-        textLabelImage->setAlignment(Qt::AlignCenter);
+        gridLayout_2 = new QGridLayout(ViewForm);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        gridLayoutImage = new QGridLayout();
+        gridLayoutImage->setObjectName(QStringLiteral("gridLayoutImage"));
 
-        gridLayout->addWidget(textLabelImage, 0, 0, 1, 1);
+        gridLayout_2->addLayout(gridLayoutImage, 0, 0, 1, 1);
 
 
         retranslateUi(ViewForm);
@@ -48,7 +46,6 @@ public:
     void retranslateUi(QWidget *ViewForm)
     {
         ViewForm->setWindowTitle(QApplication::translate("ViewForm", "Form", 0));
-        textLabelImage->setText(QApplication::translate("ViewForm", "TextLabelImage", 0));
     } // retranslateUi
 
 };

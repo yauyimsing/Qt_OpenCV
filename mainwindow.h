@@ -17,6 +17,8 @@ public:
 private:
     Ui::MainWindow* ui;
     void setToolBar();
+    void addStatusBar();
+    void setAction();
 signals:
 
 public slots:
@@ -25,6 +27,7 @@ private slots:
     void on_actionShow_triggered();
     void on_actionDialog_triggered();
     void on_actionViewForm_triggered();
+    void getCommand(const QString &string);
 };
 
 #endif // MAINWINDOW_H

@@ -33,6 +33,19 @@ Mat Histogram1D::getHistogram(const Mat &image)
     return hist;
 }
 
+void Histogram1D::hCalcBackProject(const Mat& image, const Mat &imageROI, Mat &result)
+{
+    MatND histogram = getHistogram(imageROI);
+    normalize(histogram, histogram, 1.0);
+    calcBackProject(&image,
+                    1,
+                    channels,
+                    histogram,
+                    result,
+                    ranges,
+                    255.0);
+}
+
 Mat Histogram1D::getHistogramImage(const Mat &image)
 {
     MatND hist = getHistogram(image);
@@ -49,7 +62,7 @@ Mat Histogram1D::getHistogramImage(const Mat &image)
                 Point(h, histSize[0] - intensity),
                 Scalar::all(0));
     }
-    cout << "h1" << endl;
+    //cout << "h1" << endl;
     return histImg;
 }
 

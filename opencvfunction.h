@@ -15,6 +15,7 @@ namespace opencvfun
     void addLogo(const Mat& image, Mat& result, char* logo = LOGOPATH);
     void ColorDetector(Mat&, Mat&, Vec3b = Vec3b(128, 128, 128), int minDist = 100);
     int getDistance(const Vec3b&, const Vec3b&);
+    Mat getProbilityMat(const Mat &image);
 }
 
 #endif // OPENCVFUNCTION_H

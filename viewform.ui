@@ -13,16 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
+  <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
-    <widget class="QLabel" name="textLabelImage">
-     <property name="text">
-      <string>TextLabelImage</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
+    <layout class="QGridLayout" name="gridLayoutImage"/>
    </item>
   </layout>
  </widget>

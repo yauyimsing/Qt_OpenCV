@@ -10,9 +10,14 @@ INPUT(
 ./debug\histogram1d.o
 ./debug\viewform.o
 ./debug\colorhistogram.o
+./debug\cmdaction.o
+./debug\imagelabel.o
+./debug\contentfinder.o
 ./debug\qrc_images.o
 ./debug\moc_qtform.o
 ./debug\moc_mainwindow.o
 ./debug\moc_showdialog.o
 ./debug\moc_viewform.o
+./debug\moc_cmdaction.o
+./debug\moc_imagelabel.o
 );

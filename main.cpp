@@ -11,6 +11,10 @@
 #include "library0.h"
 #include "qtform.h"
 #include "mainwindow.h"
+#include "test.h"
+#include "imagelabel.h"
+#include "colorhistogram.h"
+#include "contentfinder.h"
 
 using namespace std;
 using namespace cv;
@@ -23,11 +27,13 @@ int main(int argc, char *argv[])
 
     MainWindow w;
     w.show();
+    LibraryStatic0 l;
+    cout << l.StaticAdd(8, 8) << endl;
 
 
-    cout << "QtForm start..." << endl;
-    //QtForm form;
-    cout << "QtForm end..." << endl;
+
+
+
     return app.exec();
  }
 
