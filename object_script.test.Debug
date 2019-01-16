@@ -13,6 +13,7 @@ INPUT(
 ./debug\cmdaction.o
 ./debug\imagelabel.o
 ./debug\contentfinder.o
+./debug\eventlineedit.o
 ./debug\qrc_images.o
 ./debug\moc_qtform.o
 ./debug\moc_mainwindow.o
@@ -20,4 +21,5 @@ INPUT(
 ./debug\moc_viewform.o
 ./debug\moc_cmdaction.o
 ./debug\moc_imagelabel.o
+./debug\moc_eventlineedit.o
 );

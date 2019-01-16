@@ -5,6 +5,7 @@
 #include <opencv2/opencv.hpp>
 using namespace cv;
 
+class EventLineEdit;
 namespace Ui {
 class QtForm;
 }
@@ -22,10 +23,15 @@ private slots:
 
 private:
     Ui::QtForm *ui;
+    EventLineEdit *eventLineEdit;
 
 private:
     void qtSetLayout();
-    void showCapture();
+    void showCapture();    
+    void initilize();
+protected:
+    void keyPressEvent(QKeyEvent *event);
+    bool eventFilter(QObject *watched, QEvent *event);
 };
 
 #endif // QTFORM_H

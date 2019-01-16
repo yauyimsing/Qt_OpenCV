@@ -13,6 +13,7 @@ INPUT(
 ./release\cmdaction.o
 ./release\imagelabel.o
 ./release\contentfinder.o
+./release\eventlineedit.o
 ./release\qrc_images.o
 ./release\moc_qtform.o
 ./release\moc_mainwindow.o
@@ -20,4 +21,5 @@ INPUT(
 ./release\moc_viewform.o
 ./release\moc_cmdaction.o
 ./release\moc_imagelabel.o
+./release\moc_eventlineedit.o
 );

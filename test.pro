@@ -23,7 +23,8 @@ SOURCES += main.cpp \
     colorhistogram.cpp \
     cmdaction.cpp \
     imagelabel.cpp \
-    contentfinder.cpp
+    contentfinder.cpp \
+    eventlineedit.cpp
 
 INCLUDEPATH += D:\temp\opencv_mingw\install\include \
                     D:\work\qt\LibraryStatic0 \
@@ -59,7 +60,8 @@ HEADERS += \
     cmdaction.h \
     imagelabel.h \
     ui_viewform.h \
-    contentfinder.h
+    contentfinder.h \
+    eventlineedit.h
 
 RESOURCES += \
     images.qrc

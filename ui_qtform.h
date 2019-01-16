@@ -37,7 +37,7 @@ public:
     QLabel *label_2;
     QTextEdit *textEdit;
     QSpacerItem *horizontalSpacer;
-    QVBoxLayout *verticalLayout_2;
+    QVBoxLayout *verticalLayout_right;
     QPushButton *pushButton;
     QSpacerItem *verticalSpacer;
     QLineEdit *lineEdit;
@@ -100,29 +100,29 @@ public:
 
         gridLayout_2->addItem(horizontalSpacer, 0, 1, 1, 1);
 
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_right = new QVBoxLayout();
+        verticalLayout_right->setObjectName(QStringLiteral("verticalLayout_right"));
         pushButton = new QPushButton(QtForm);
         pushButton->setObjectName(QStringLiteral("pushButton"));
 
-        verticalLayout_2->addWidget(pushButton);
+        verticalLayout_right->addWidget(pushButton);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        verticalLayout_2->addItem(verticalSpacer);
+        verticalLayout_right->addItem(verticalSpacer);
 
         lineEdit = new QLineEdit(QtForm);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
 
-        verticalLayout_2->addWidget(lineEdit);
+        verticalLayout_right->addWidget(lineEdit);
 
         pushButton_2 = new QPushButton(QtForm);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
 
-        verticalLayout_2->addWidget(pushButton_2);
+        verticalLayout_right->addWidget(pushButton_2);
 
 
-        gridLayout_2->addLayout(verticalLayout_2, 0, 2, 1, 1);
+        gridLayout_2->addLayout(verticalLayout_right, 0, 2, 1, 1);
 
 
         gridLayout->addLayout(gridLayout_2, 0, 0, 1, 1);

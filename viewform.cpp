@@ -43,5 +43,21 @@ void ViewForm::paintEvent(QPaintEvent *event)
 {
 }
 
+void ViewForm::imageRead(string filename)
+{
+    image = imread(filename, 0);
+    int roiWidth, roiHeight;
+    roiHeight = roiWidth = 100;
+    imageROI = image(Rect(image.rows/2,
+                          image.cols/2,
+                          roiHeight,
+                          roiWidth));
+}
+
+bool ViewForm::eventFilter(QObject *watched, QEvent *event)
+{
+
+}
+
 
 

@@ -7,6 +7,9 @@
 #include <opencv2/opencv.hpp>
 #include "opencvfunction.h"
 #include "colordetector.h"
+#include "eventlineedit.h"
+#include <QKeyEvent>
+#include <QDebug>
 
 using namespace std;
 
@@ -15,6 +18,7 @@ QtForm::QtForm(QWidget *parent) :
     ui(new Ui::QtForm)
 {
     ui->setupUi(this);
+    initilize();
     //qtSetLayout();
     //【2】循环显示每一帧
     //this->show();
@@ -33,6 +37,15 @@ QtForm::QtForm(QWidget *parent) :
 QtForm::~QtForm()
 {
     delete ui;
+}
+
+void QtForm::initilize()
+{
+    //qDebug() << "initilize";
+    eventLineEdit = new EventLineEdit(this);
+    ui->verticalLayout_right->addWidget(eventLineEdit);
+    eventLineEdit->installEventFilter(this);
+
 }
 
 void QtForm::qtSetLayout()
@@ -80,6 +93,21 @@ void QtForm::showCapture()
         }
     }
     cout << "while end..." << endl;
+}
+
+void QtForm::keyPressEvent(QKeyEvent *event)
+{
+    qDebug() << "widget key down event";
+}
+
+bool QtForm::eventFilter(QObject *watched, QEvent *event)
+{
+    if(watched == this->eventLineEdit)
+    {
+        if(event->type() == QEvent::KeyPress)
+            qDebug() << "widget event filter";
+    }
+    return QWidget::eventFilter(watched, event);
 }
 
 QImage QtForm::cvMat2QImage(const cv::Mat& mat)

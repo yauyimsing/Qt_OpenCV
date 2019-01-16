@@ -36,16 +36,8 @@ private:
     void initilize();
     void paintEvent(QPaintEvent *event);
 public:
-    void imageRead(string filename)
-    {
-        image = imread(filename, 0);
-        int roiWidth, roiHeight;
-        roiHeight = roiWidth = 100;
-        imageROI = image(Rect(image.rows/2,
-                              image.cols/2,
-                              roiHeight,
-                              roiWidth));
-    }
+    void imageRead(string filename);
+    bool eventFilter(QObject *watched, QEvent *event);
 };
 
 #endif // VIEWFORM_H
