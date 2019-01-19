@@ -7,6 +7,7 @@
 #include <QColorDialog>
 #include <QColor>
 #include "colordetectcontroller.h"
+#include <QTimer>
 
 namespace Ui {
 class ShowDialog;
@@ -33,6 +34,8 @@ private:
     QAction* actionNew;
     void initLayout();
     void displayMat(Mat& image);
+    QTimer *timer;
+    void timerUpdate();
 
 };
 

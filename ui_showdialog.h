@@ -16,6 +16,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
@@ -28,9 +29,10 @@ QT_BEGIN_NAMESPACE
 class Ui_ShowDialog
 {
 public:
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
+    QLCDNumber *lcdNumber;
     QPushButton *pushButtonOpenImage;
     QPushButton *pushButtonSelectColor;
     QSlider *verticalSliderThreshold;
@@ -46,26 +48,37 @@ public:
         if (ShowDialog->objectName().isEmpty())
             ShowDialog->setObjectName(QStringLiteral("ShowDialog"));
         ShowDialog->resize(678, 516);
-        widget = new QWidget(ShowDialog);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 50, 651, 451));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(ShowDialog);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 50, 651, 451));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setSizeConstraint(QLayout::SetNoConstraint);
-        pushButtonOpenImage = new QPushButton(widget);
+        lcdNumber = new QLCDNumber(layoutWidget);
+        lcdNumber->setObjectName(QStringLiteral("lcdNumber"));
+        QFont font;
+        font.setFamily(QStringLiteral("SimSun"));
+        font.setBold(true);
+        font.setWeight(75);
+        lcdNumber->setFont(font);
+        lcdNumber->setDigitCount(8);
+
+        verticalLayout->addWidget(lcdNumber);
+
+        pushButtonOpenImage = new QPushButton(layoutWidget);
         pushButtonOpenImage->setObjectName(QStringLiteral("pushButtonOpenImage"));
 
         verticalLayout->addWidget(pushButtonOpenImage);
 
-        pushButtonSelectColor = new QPushButton(widget);
+        pushButtonSelectColor = new QPushButton(layoutWidget);
         pushButtonSelectColor->setObjectName(QStringLiteral("pushButtonSelectColor"));
 
         verticalLayout->addWidget(pushButtonSelectColor);
 
-        verticalSliderThreshold = new QSlider(widget);
+        verticalSliderThreshold = new QSlider(layoutWidget);
         verticalSliderThreshold->setObjectName(QStringLiteral("verticalSliderThreshold"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
@@ -86,22 +99,22 @@ public:
 
         verticalLayout->addItem(verticalSpacer);
 
-        labelColor = new QLabel(widget);
+        labelColor = new QLabel(layoutWidget);
         labelColor->setObjectName(QStringLiteral("labelColor"));
 
         verticalLayout->addWidget(labelColor);
 
-        labelDistance = new QLabel(widget);
+        labelDistance = new QLabel(layoutWidget);
         labelDistance->setObjectName(QStringLiteral("labelDistance"));
 
         verticalLayout->addWidget(labelDistance);
 
-        labelThreshold = new QLabel(widget);
+        labelThreshold = new QLabel(layoutWidget);
         labelThreshold->setObjectName(QStringLiteral("labelThreshold"));
 
         verticalLayout->addWidget(labelThreshold);
 
-        pushButtonProcess = new QPushButton(widget);
+        pushButtonProcess = new QPushButton(layoutWidget);
         pushButtonProcess->setObjectName(QStringLiteral("pushButtonProcess"));
 
         verticalLayout->addWidget(pushButtonProcess);
@@ -109,7 +122,7 @@ public:
 
         horizontalLayout->addLayout(verticalLayout);
 
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QStringLiteral("label"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);

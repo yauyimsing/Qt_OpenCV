@@ -3,6 +3,7 @@
 #include "qtform.h"
 #include <iostream>
 #include "histogram1d.h"
+#include <Qtime>
 
 using namespace std;
 
@@ -11,6 +12,9 @@ ShowDialog::ShowDialog(QWidget *parent) :
     ui(new Ui::ShowDialog)
 {
     ui->setupUi(this);
+    timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &timerUpdate);
+    timer->start(1000);
     initLayout();
 }
 
@@ -54,6 +58,17 @@ void ShowDialog::displayMat(Mat& image)
     QImage result = QtForm::cvMat2QImage(image);
     result = result.scaled(ui->label->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     ui->label->setPixmap(QPixmap::fromImage(result));
+}
+
+void ShowDialog::timerUpdate()
+{
+    QTime time = QTime::currentTime();
+    QString text = time.toString("hh:mm:ss");
+    if((time.second() % 2) == 0)
+    {
+        text[5] = ' ';
+    }
+    ui->lcdNumber->display(text);
 }
 
 void ShowDialog::on_pushButtonSelectColor_clicked()

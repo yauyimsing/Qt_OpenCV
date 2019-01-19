@@ -46,6 +46,7 @@ void QtForm::initilize()
     ui->verticalLayout_right->addWidget(eventLineEdit);
     eventLineEdit->installEventFilter(this);
 
+    timerId = startTimer(10000);
 }
 
 void QtForm::qtSetLayout()
@@ -63,35 +64,47 @@ void QtForm::on_pushButton_clicked()
     ui->textEdit->setVisible(!ui->textEdit->isVisible());
 }
 
+void QtForm::timerEvent(QTimerEvent *event)
+{
+    if(event->timerId() == timerId)
+    {
+        captureState = false;
+        qDebug() << "timer ends";
+    }
+}
+
 void QtForm::showCapture()
 {
+
     show();
     VideoCapture capture(0);
+    captureState = true;
     cout << "while..." << endl;
     int i = 0;
     OpenCvClass opencv;
     Mat frame;  //定义一个Mat变量，用于存储每一帧的图像
     Mat result;  //
-    while(true){
+    while(captureState){
         opencv.tickStart();
         capture>>frame;  //读取当前帧
         imshow("video",frame);  //显示当前帧
         opencvfun::ColorDetector(frame, result);
+        //opencvfun::addLogo(result, result);
         QImage img = cvMat2QImage(result);
         //设定图像大小自适应label窗口的大小
         img = img.scaled(ui->label->size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
         ui->label->setPixmap(QPixmap::fromImage(img));
 
         opencv.tickEnd();
-        cout << " time:" << opencv.getDuration() << "ms;"
-             << endl;
+        //cout << " time:" << opencv.getDuration() << "ms;" << endl;
         waitKey(5);  //延时30ms
         if(i++ > 100)
         {
-            cv::imwrite("ee.jpg", frame);
-            break;
+            //cv::imwrite("ee.jpg", frame);
+            //break;
         }
     }
+    capture.release();
     cout << "while end..." << endl;
 }
 

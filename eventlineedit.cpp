@@ -18,7 +18,7 @@ void EventLineEdit::keyPressEvent(QKeyEvent *event)
 
 bool EventLineEdit::event(QEvent *event)
 {
-    qDebug() << "event";
+    //qDebug() << "event";
     if(event->type() == QEvent::KeyPress)
         qDebug() << "event->type() == QEvent::KeyPress";
     return QLineEdit::event(event);

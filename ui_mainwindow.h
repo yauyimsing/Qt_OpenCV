@@ -33,6 +33,7 @@ public:
     QAction *actionShow;
     QAction *actionDialog;
     QAction *actionViewForm;
+    QAction *actionTestForm;
     QWidget *centralwidget;
     QGridLayout *gridLayout;
     QMdiArea *mdiArea;
@@ -62,6 +63,8 @@ public:
         actionDialog->setObjectName(QStringLiteral("actionDialog"));
         actionViewForm = new QAction(MainWindow);
         actionViewForm->setObjectName(QStringLiteral("actionViewForm"));
+        actionTestForm = new QAction(MainWindow);
+        actionTestForm->setObjectName(QStringLiteral("actionTestForm"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
@@ -100,6 +103,7 @@ public:
         menuStart_S->addAction(actionShow);
         menuStart_S->addAction(actionDialog);
         menuForm->addAction(actionViewForm);
+        menuForm->addAction(actionTestForm);
         toolBar->addAction(actionOpen_O);
         toolBar->addAction(actionShow);
         toolBar->addAction(actionDialog);
@@ -120,6 +124,7 @@ public:
         actionShow->setText(QApplication::translate("MainWindow", "Show", 0));
         actionDialog->setText(QApplication::translate("MainWindow", "Dialog", 0));
         actionViewForm->setText(QApplication::translate("MainWindow", "ViewForm", 0));
+        actionTestForm->setText(QApplication::translate("MainWindow", "TestForm", 0));
         menuFile_F->setTitle(QApplication::translate("MainWindow", "File(&F)", 0));
         menuEdit_E->setTitle(QApplication::translate("MainWindow", "Edit(&E)", 0));
         menuStart_S->setTitle(QApplication::translate("MainWindow", "Option", 0));

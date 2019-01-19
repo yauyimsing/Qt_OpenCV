@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -28,6 +28,20 @@
       <property name="sizeConstraint">
        <enum>QLayout::SetNoConstraint</enum>
       </property>
+      <item>
+       <widget class="QLCDNumber" name="lcdNumber">
+        <property name="font">
+         <font>
+          <family>SimSun</family>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="digitCount">
+         <number>8</number>
+        </property>
+       </widget>
+      </item>
       <item>
        <widget class="QPushButton" name="pushButtonOpenImage">
         <property name="text">

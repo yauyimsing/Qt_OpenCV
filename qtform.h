@@ -24,6 +24,11 @@ private slots:
 private:
     Ui::QtForm *ui;
     EventLineEdit *eventLineEdit;
+    int timerId;
+    bool captureState;
+
+protected:
+    void timerEvent(QTimerEvent *event);
 
 private:
     void qtSetLayout();

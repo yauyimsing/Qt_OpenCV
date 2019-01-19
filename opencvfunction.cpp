@@ -145,7 +145,7 @@ namespace opencvfun
         cv::Mat_<cv::Vec3b>::const_iterator itend = image.end<cv::Vec3b>();
         cv::Mat_<uchar>::iterator itout = result.begin<uchar>();
         int size = itend - it;
-        cout << "end: " << itend.ptr << "size:" << itend - it << endl;
+        //cout << "end: " << itend.ptr << "size:" << itend - it << endl;
         int i = 0;
         for (; it != itend; it++, itout++)
         {

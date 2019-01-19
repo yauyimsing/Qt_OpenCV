@@ -53,6 +53,7 @@
      <string>Form</string>
     </property>
     <addaction name="actionViewForm"/>
+    <addaction name="actionTestForm"/>
    </widget>
    <addaction name="menuFile_F"/>
    <addaction name="menuEdit_E"/>
@@ -104,6 +105,11 @@
   <action name="actionViewForm">
    <property name="text">
     <string>ViewForm</string>
+   </property>
+  </action>
+  <action name="actionTestForm">
+   <property name="text">
+    <string>TestForm</string>
    </property>
   </action>
  </widget>
