@@ -29,7 +29,10 @@ int main(int argc, char *argv[])
     w.show();
     LibraryStatic0 l;
     cout << l.StaticAdd(8, 8) << endl;
-
+    for(int i = 0; i < 10; ++i)
+    {
+        cout << i << endl;
+    }
 
 
 

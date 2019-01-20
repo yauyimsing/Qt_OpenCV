@@ -8,5 +8,6 @@
     </qresource>
     <qresource prefix="/logos">
         <file>images/logo.png</file>
+        <file>images/logo0.png</file>
     </qresource>
 </RCC>

@@ -15,6 +15,7 @@ INPUT(
 ./release\contentfinder.o
 ./release\eventlineedit.o
 ./release\testform.o
+./release\singleimageform.o
 ./release\qrc_images.o
 ./release\moc_qtform.o
 ./release\moc_mainwindow.o
@@ -24,4 +25,5 @@ INPUT(
 ./release\moc_imagelabel.o
 ./release\moc_eventlineedit.o
 ./release\moc_testform.o
+./release\moc_singleimageform.o
 );

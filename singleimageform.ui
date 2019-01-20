@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SingleImageForm</class>
+ <widget class="QWidget" name="SingleImageForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>621</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="7,1">
+     <item>
+      <layout class="QGridLayout" name="gridLayoutImage_2"/>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QComboBox" name="comboBox_1">
+           <item>
+            <property name="text">
+             <string>image</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>erode</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blur</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>canny</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>capture</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>create alpha mat</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>add logo</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>color reduce</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>split channels</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_2"/>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_2"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

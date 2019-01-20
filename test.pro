@@ -25,7 +25,8 @@ SOURCES += main.cpp \
     imagelabel.cpp \
     contentfinder.cpp \
     eventlineedit.cpp \
-    testform.cpp
+    testform.cpp \
+    singleimageform.cpp
 
 INCLUDEPATH += D:\temp\opencv_mingw\install\include \
                     D:\work\qt\LibraryStatic0 \
@@ -43,7 +44,8 @@ FORMS += \
     mainwindow.ui \
     showdialog.ui \
     viewform.ui \
-    testform.ui
+    testform.ui \
+    singleimageform.ui
 
 HEADERS += \
     qtform.h \
@@ -65,7 +67,8 @@ HEADERS += \
     contentfinder.h \
     eventlineedit.h \
     testform.h \
-    ui_testform.h
+    ui_testform.h \
+    singleimageform.h
 
 RESOURCES += \
     images.qrc

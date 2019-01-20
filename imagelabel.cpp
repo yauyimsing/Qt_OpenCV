@@ -7,18 +7,21 @@
 #include <QMouseEvent>
 #include "contentfinder.h"
 #include "colorhistogram.h"
+#include "QApplication"
+#include <QTime>
 
 using namespace std;
 
 ImageLabel::ImageLabel(QWidget* parent)
     : QLabel(parent)
 {
+    cout << "ImageLabel ImageLabel()" << endl;
     initilize();
 }
 
 ImageLabel::~ImageLabel()
 {
-
+    cout << "ImageLabel ~ImageLabel()" << endl;
 }
 
 void ImageLabel::showEvent(QShowEvent * event)
@@ -168,8 +171,8 @@ void ImageLabel::imageRead(string filename)
     }
     int roiWidth, roiHeight;
     roiHeight = roiWidth = 100;
-    imageROI = image(Rect(image.rows/2,
-                          image.cols/2,
+    imageROI = image(Rect(image.rows/3,
+                          image.cols/3,
                           roiHeight,
                           roiWidth));
 }
@@ -177,4 +180,24 @@ void ImageLabel::imageRead(string filename)
 const Mat ImageLabel::getImage()
 {
     return image;
+}
+
+ImageLabel& ImageLabel::operator<<(Mat &image)
+{
+    displayMat(image);
+    //Delay_MSec(2000);
+    return *this;
+}
+
+void ImageLabel::showImage(Mat &image)
+{
+    displayMat(image);
+}
+void ImageLabel::Delay_MSec(unsigned int msec)
+{
+    QTime _Timer = QTime::currentTime().addMSecs(msec);
+
+    while( QTime::currentTime() < _Timer )
+
+    QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }

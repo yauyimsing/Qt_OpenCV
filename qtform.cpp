@@ -24,7 +24,8 @@ QtForm::QtForm(QWidget *parent) :
     //this->show();
     //capture.release();
     OpenCvClass opencv;
-    Mat img = opencv.LoadPicture();
+    opencv.LoadPicture();
+    Mat img = opencv.getImage();
     Mat result;
     ColorDetector detector;
     result = detector.process(img);
@@ -169,4 +170,9 @@ QImage QtForm::cvMat2QImage(const cv::Mat& mat)
         //qDebug() << "ERROR: Mat could not be converted to QImage.";
         return QImage();
     }
+}
+
+void QtForm::on_comboBox_currentIndexChanged(const QString &arg1)
+{
+
 }

@@ -51,7 +51,7 @@ bool TestForm::eventFilter(QObject *watched, QEvent *event)
             }
             else
             {
-                return true;
+                return false;
             }
         }
     }

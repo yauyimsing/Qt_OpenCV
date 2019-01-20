@@ -12,10 +12,13 @@ class ImageLabel : public QLabel
 {
     Q_OBJECT
 public:
-    ImageLabel(QWidget *parent = 0);
+    explicit ImageLabel(QWidget *parent = 0);
     ~ImageLabel();
     void imageRead(string filename);
     const Mat getImage();
+    ImageLabel& operator<<(Mat& image);
+    void showImage(Mat &image);
+    void Delay_MSec(unsigned int msec);
 private:
     Mat image;
     Mat result;

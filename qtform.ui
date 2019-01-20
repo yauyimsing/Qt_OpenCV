@@ -95,6 +95,20 @@
      <item row="0" column="2">
       <layout class="QVBoxLayout" name="verticalLayout_right">
        <item>
+        <widget class="QComboBox" name="comboBox">
+         <item>
+          <property name="text">
+           <string>image</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>erade</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="pushButton">
          <property name="text">
           <string>PushButton</string>

@@ -1,16 +1,16 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'qtform.h'
+** Meta object code from reading C++ file 'singleimageform.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../qtform.h"
+#include "../singleimageform.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'qtform.h' doesn't include <QObject>."
+#error "The header file 'singleimageform.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.7.0. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -18,30 +18,30 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_QtForm_t {
+struct qt_meta_stringdata_SingleImageForm_t {
     QByteArrayData data[5];
-    char stringdata0[67];
+    char stringdata0[90];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_QtForm_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_SingleImageForm_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_QtForm_t qt_meta_stringdata_QtForm = {
+static const qt_meta_stringdata_SingleImageForm_t qt_meta_stringdata_SingleImageForm = {
     {
-QT_MOC_LITERAL(0, 0, 6), // "QtForm"
-QT_MOC_LITERAL(1, 7, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(2, 29, 0), // ""
-QT_MOC_LITERAL(3, 30, 31), // "on_comboBox_currentIndexChanged"
-QT_MOC_LITERAL(4, 62, 4) // "arg1"
+QT_MOC_LITERAL(0, 0, 15), // "SingleImageForm"
+QT_MOC_LITERAL(1, 16, 33), // "on_comboBox_2_currentIndexCha..."
+QT_MOC_LITERAL(2, 50, 0), // ""
+QT_MOC_LITERAL(3, 51, 4), // "arg1"
+QT_MOC_LITERAL(4, 56, 33) // "on_comboBox_1_currentIndexCha..."
 
     },
-    "QtForm\0on_pushButton_clicked\0\0"
-    "on_comboBox_currentIndexChanged\0arg1"
+    "SingleImageForm\0on_comboBox_2_currentIndexChanged\0"
+    "\0arg1\0on_comboBox_1_currentIndexChanged"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_QtForm[] = {
+static const uint qt_meta_data_SingleImageForm[] = {
 
  // content:
        7,       // revision
@@ -55,49 +55,49 @@ static const uint qt_meta_data_QtForm[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   24,    2, 0x08 /* Private */,
-       3,    1,   25,    2, 0x08 /* Private */,
+       1,    1,   24,    2, 0x08 /* Private */,
+       4,    1,   27,    2, 0x08 /* Private */,
 
  // slots: parameters
-    QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,    4,
+    QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void, QMetaType::QString,    3,
 
        0        // eod
 };
 
-void QtForm::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void SingleImageForm::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        QtForm *_t = static_cast<QtForm *>(_o);
+        SingleImageForm *_t = static_cast<SingleImageForm *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_pushButton_clicked(); break;
-        case 1: _t->on_comboBox_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 0: _t->on_comboBox_2_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 1: _t->on_comboBox_1_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     }
 }
 
-const QMetaObject QtForm::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_QtForm.data,
-      qt_meta_data_QtForm,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+const QMetaObject SingleImageForm::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_SingleImageForm.data,
+      qt_meta_data_SingleImageForm,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
-const QMetaObject *QtForm::metaObject() const
+const QMetaObject *SingleImageForm::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *QtForm::qt_metacast(const char *_clname)
+void *SingleImageForm::qt_metacast(const char *_clname)
 {
     if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_QtForm.stringdata0))
-        return static_cast<void*>(const_cast< QtForm*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_SingleImageForm.stringdata0))
+        return static_cast<void*>(const_cast< SingleImageForm*>(this));
     return QWidget::qt_metacast(_clname);
 }
 
-int QtForm::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int SingleImageForm::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)

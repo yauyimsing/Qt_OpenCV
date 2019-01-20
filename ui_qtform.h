@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -38,6 +39,7 @@ public:
     QTextEdit *textEdit;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout_right;
+    QComboBox *comboBox;
     QPushButton *pushButton;
     QSpacerItem *verticalSpacer;
     QLineEdit *lineEdit;
@@ -102,6 +104,11 @@ public:
 
         verticalLayout_right = new QVBoxLayout();
         verticalLayout_right->setObjectName(QStringLiteral("verticalLayout_right"));
+        comboBox = new QComboBox(QtForm);
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+
+        verticalLayout_right->addWidget(comboBox);
+
         pushButton = new QPushButton(QtForm);
         pushButton->setObjectName(QStringLiteral("pushButton"));
 
@@ -138,6 +145,11 @@ public:
         QtForm->setWindowTitle(QApplication::translate("QtForm", "Form", 0));
         label->setText(QApplication::translate("QtForm", "TextLabel", 0));
         label_2->setText(QApplication::translate("QtForm", "Info(&I)", 0));
+        comboBox->clear();
+        comboBox->insertItems(0, QStringList()
+         << QApplication::translate("QtForm", "image", 0)
+         << QApplication::translate("QtForm", "erade", 0)
+        );
         pushButton->setText(QApplication::translate("QtForm", "PushButton", 0));
         pushButton_2->setText(QApplication::translate("QtForm", "PushButton", 0));
     } // retranslateUi

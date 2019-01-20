@@ -11,6 +11,7 @@
 #include "cmdaction.h"
 #include <QDebug>
 #include "testform.h"
+#include "singleimageform.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -104,6 +105,17 @@ void MainWindow::getCommand(const QString &string)
 void MainWindow::on_actionTestForm_triggered()
 {
     TestForm *form = new TestForm(this);
+    QSize size = form->size();
+    QMdiSubWindow* child = ui->mdiArea->addSubWindow(form);
+    child->setWindowTitle("picture sub-window");
+
+    child->resize(size.width() + 100, size.height() + 100);
+    child->show();
+}
+
+void MainWindow::on_actionSingleImageForm_triggered()
+{
+    SingleImageForm *form = new SingleImageForm(this);
     QSize size = form->size();
     QMdiSubWindow* child = ui->mdiArea->addSubWindow(form);
     child->setWindowTitle("picture sub-window");

@@ -29,6 +29,7 @@ private slots:
     void on_actionViewForm_triggered();
     void getCommand(const QString &string);
     void on_actionTestForm_triggered();
+    void on_actionSingleImageForm_triggered();
 };
 
 #endif // MAINWINDOW_H

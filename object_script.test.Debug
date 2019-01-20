@@ -15,6 +15,7 @@ INPUT(
 ./debug\contentfinder.o
 ./debug\eventlineedit.o
 ./debug\testform.o
+./debug\singleimageform.o
 ./debug\qrc_images.o
 ./debug\moc_qtform.o
 ./debug\moc_mainwindow.o
@@ -24,4 +25,5 @@ INPUT(
 ./debug\moc_imagelabel.o
 ./debug\moc_eventlineedit.o
 ./debug\moc_testform.o
+./debug\moc_singleimageform.o
 );
