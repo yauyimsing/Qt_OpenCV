@@ -51008,16 +51008,16 @@ bool qUnregisterResourceData(int, const unsigned char *, const unsigned char *, 
 }
 #endif
 
-int QT_RCC_MANGLE_NAMESPACE(qInitResources_images)();
-int QT_RCC_MANGLE_NAMESPACE(qInitResources_images)()
+int QT_RCC_MANGLE_NAMESPACE(qInitResources_imageResource)();
+int QT_RCC_MANGLE_NAMESPACE(qInitResources_imageResource)()
 {
     QT_RCC_PREPEND_NAMESPACE(qRegisterResourceData)
         (0x01, qt_resource_struct, qt_resource_name, qt_resource_data);
     return 1;
 }
 
-int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_images)();
-int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_images)()
+int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_imageResource)();
+int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_imageResource)()
 {
     QT_RCC_PREPEND_NAMESPACE(qUnregisterResourceData)
        (0x01, qt_resource_struct, qt_resource_name, qt_resource_data);
@@ -51026,7 +51026,7 @@ int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_images)()
 
 namespace {
    struct initializer {
-       initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_images)(); }
-       ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_images)(); }
+       initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_imageResource)(); }
+       ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_imageResource)(); }
    } dummy;
 }

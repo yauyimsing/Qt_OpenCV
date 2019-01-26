@@ -2,6 +2,7 @@
     <qresource prefix="/images">
         <file>images/en.jpg</file>
         <file>images/en0.jpg</file>
+        <file>images/line.png</file>
     </qresource>
     <qresource prefix="/picture">
         <file>images/png/face.png</file>

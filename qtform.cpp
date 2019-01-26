@@ -18,6 +18,10 @@ QtForm::QtForm(QWidget *parent) :
     ui(new Ui::QtForm)
 {
     ui->setupUi(this);
+    //QImage *img2=new QImage; //新建一个image对象
+    //img2->load(":/logos/images/logo.png"); //将图像资源载入对象img，注意路径，可点进图片右键复制路径
+    //ui->label->setPixmap(QPixmap::fromImage(*img2));
+    //return;
     initilize();
     //qtSetLayout();
     //【2】循环显示每一帧

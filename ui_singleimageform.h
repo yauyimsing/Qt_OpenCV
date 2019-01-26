@@ -105,14 +105,26 @@ public:
         comboBox_1->clear();
         comboBox_1->insertItems(0, QStringList()
          << QApplication::translate("SingleImageForm", "image", 0)
-         << QApplication::translate("SingleImageForm", "erode", 0)
+         << QApplication::translate("SingleImageForm", "gray", 0)
+         << QApplication::translate("SingleImageForm", "morphology", 0)
          << QApplication::translate("SingleImageForm", "blur", 0)
-         << QApplication::translate("SingleImageForm", "canny", 0)
+         << QApplication::translate("SingleImageForm", "edge detection", 0)
          << QApplication::translate("SingleImageForm", "capture", 0)
          << QApplication::translate("SingleImageForm", "create alpha mat", 0)
          << QApplication::translate("SingleImageForm", "add logo", 0)
          << QApplication::translate("SingleImageForm", "color reduce", 0)
          << QApplication::translate("SingleImageForm", "split channels", 0)
+         << QApplication::translate("SingleImageForm", "contrast and bright", 0)
+         << QApplication::translate("SingleImageForm", "filter", 0)
+         << QApplication::translate("SingleImageForm", "flood fill", 0)
+         << QApplication::translate("SingleImageForm", "resize", 0)
+         << QApplication::translate("SingleImageForm", "threshold", 0)
+         << QApplication::translate("SingleImageForm", "translation", 0)
+         << QApplication::translate("SingleImageForm", "remap", 0)
+         << QApplication::translate("SingleImageForm", "affine transform", 0)
+         << QApplication::translate("SingleImageForm", "equalize histogram", 0)
+         << QApplication::translate("SingleImageForm", "contours", 0)
+         << QApplication::translate("SingleImageForm", "convex", 0)
         );
         pushButton_2->setText(QApplication::translate("SingleImageForm", "PushButton", 0));
     } // retranslateUi

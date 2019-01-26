@@ -22,6 +22,8 @@ private slots:
 
     void on_comboBox_1_currentIndexChanged(const QString &arg1);
 
+    void on_comboBox_1_currentTextChanged(const QString &arg1);
+
 private:
     enum Mode{ImageMode = 0, FrameMode = 1};
     ImageLabel *imageLabel;

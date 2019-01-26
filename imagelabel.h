@@ -17,6 +17,7 @@ public:
     void imageRead(string filename);
     const Mat getImage();
     ImageLabel& operator<<(Mat& image);
+    ImageLabel& operator<<(QString text);
     void showImage(Mat &image);
     void Delay_MSec(unsigned int msec);
 private:

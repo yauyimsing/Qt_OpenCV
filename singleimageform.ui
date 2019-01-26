@@ -32,7 +32,12 @@
            </item>
            <item>
             <property name="text">
-             <string>erode</string>
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>morphology</string>
             </property>
            </item>
            <item>
@@ -42,7 +47,7 @@
            </item>
            <item>
             <property name="text">
-             <string>canny</string>
+             <string>edge detection</string>
             </property>
            </item>
            <item>
@@ -68,6 +73,61 @@
            <item>
             <property name="text">
              <string>split channels</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>contrast and bright</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>filter</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>flood fill</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>resize</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>threshold</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>translation</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>remap</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>affine transform</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>equalize histogram</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>contours</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>convex</string>
             </property>
            </item>
           </widget>

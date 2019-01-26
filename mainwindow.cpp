@@ -119,7 +119,6 @@ void MainWindow::on_actionSingleImageForm_triggered()
     QSize size = form->size();
     QMdiSubWindow* child = ui->mdiArea->addSubWindow(form);
     child->setWindowTitle("picture sub-window");
-
     child->resize(size.width() + 100, size.height() + 100);
-    child->show();
+    child->showMaximized();
 }

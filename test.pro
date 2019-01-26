@@ -71,4 +71,4 @@ HEADERS += \
     singleimageform.h
 
 RESOURCES += \
-    images.qrc
+    imageResource.qrc
