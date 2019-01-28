@@ -491,6 +491,371 @@ void OpenCvClass::convexHullImage()
     }
     result = image;
 }
+
+void OpenCvClass::minAreaRectImage()
+{
+    Mat image(600, 600, CV_8UC3);
+    RNG& rng = theRNG();
+    int count = rng.uniform(3, 103);
+    vector<Point> points;
+    for(int i = 0; i < count; i++)
+    {
+        Point point;
+        point.x = rng.uniform(image.cols/4, image.cols*3/4);
+        point.y = rng.uniform(image.rows/4, image.rows*3/4);
+        points.push_back(point);
+    }
+    RotatedRect box = minAreaRect(points);
+    Point2f vertex[4];
+    box.points(vertex);
+    image = Scalar::all(0);
+    for(int i = 0; i < count; i++)
+    {
+        circle(image, points[i], 3, Scalar(rng.uniform(0, 255),
+                                           rng.uniform(0, 255),
+                                           rng.uniform(0, 255)),
+               FILLED, LINE_AA);
+    }
+    for(int i = 0; i < 4; i++)
+    {
+        line(image, vertex[i], vertex[(i+1)%4], Scalar(100, 200, 211), 2, LINE_AA);
+    }
+    result = image;
+}
+
+void OpenCvClass::minEnclosingCircleImage()
+{
+    Mat image(600, 600, CV_8UC3);
+    RNG& rng = theRNG();
+    int count = rng.uniform(3, 103);
+    vector<Point> points;
+    for(int i = 0; i < count; i++)
+    {
+        Point point;
+        point.x = rng.uniform(image.cols/4, image.cols*3/4);
+        point.y = rng.uniform(image.rows/4, image.rows*3/4);
+        points.push_back(point);
+    }
+    Point2f center;
+    float radius = 0;
+    minEnclosingCircle(Mat(points), center, radius);
+    image = Scalar::all(0);
+    for(int i = 0; i < count; i++)
+    {
+        circle(image, points[i], 3, Scalar(rng.uniform(0, 255),
+                                           rng.uniform(0, 255),
+                                           rng.uniform(0, 255)),
+               FILLED, LINE_AA);
+    }
+    circle(image, center, cvRound(radius), Scalar(rng.uniform(0, 255),
+                                                  rng.uniform(0, 255),
+                                                  rng.uniform(0, 255)),
+                      2, LINE_AA);
+    result = image;
+}
+
+void OpenCvClass::momentImage()
+{
+    Mat grayImage;
+    Mat cannyMat;
+    int threshold = 100;
+    RNG& rng = theRNG();
+    vector<vector<Point> > contours;
+    vector<Vec4i> hierarchy;
+    Mat image = imread("images/half_circle.png");
+    cvtColor(image, grayImage, COLOR_BGR2GRAY);
+    blur(grayImage, grayImage, Size(3, 3));
+    Canny(grayImage, cannyMat, threshold, threshold*2, 3);
+    findContours(cannyMat, contours, hierarchy,
+                 RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0));
+    vector<Moments> mu(contours.size());
+    for(unsigned int i = 0; i < contours.size(); i++)
+    {
+        mu[i] = moments(contours[i], false);
+    }
+    vector<Point2f> mc(contours.size());
+    for(unsigned int i = 0; i < contours.size(); i++)
+    {
+        mc[i] = Point2f(static_cast<float>(mu[i].m10 / mu[i].m00),
+                        static_cast<float>(mu[i].m01 / mu[i].m00));
+    }
+    Mat drawing = Mat::zeros(cannyMat.size(), CV_8UC3);
+
+    for(unsigned int i = 0; i < contours.size(); i++)
+    {
+        Scalar color = Scalar(rng.uniform(0, 255),rng.uniform(0, 255),rng.uniform(0, 255));
+        if(arcLength(contours[i], true) > 1)
+        {
+            drawContours(drawing, contours, i, color, 2, 8, hierarchy, 0, Point());
+            circle(drawing, mc[i], 4, color, -1, 8, 0);
+            cout << "area" << i << ": " << contourArea(contours[i]) << endl;
+            cout << "length" << i << ": " << arcLength(contours[i], true) << endl;
+        }
+    }
+
+    result = drawing;
+}
+
+void OpenCvClass::watershedImage()
+{
+    Mat srcImage, grayImage, maskImage;
+    this->image.copyTo(srcImage);
+    cvtColor(srcImage, maskImage, COLOR_BGR2GRAY);
+    cvtColor(maskImage, grayImage, COLOR_GRAY2BGR);
+    maskImage = Scalar::all(0);
+    int i, j, compCount = 0;
+    vector<vector<Point> > contours;
+    vector<Vec4i> hierarchy;
+    //findContours(g);
+}
+
+void OpenCvClass::calcHS2DHistImage()
+{
+    Mat srcImage = this->image;
+    Mat hsvImage;
+    cvtColor(srcImage, hsvImage, COLOR_BGR2HSV);
+    int hueBinNum = 30;
+    int saturationBinNum = 32;
+    int histSize[] = {hueBinNum, saturationBinNum};
+    float hueRanges[] = {0, 180};
+    float saturationRanges[] = {0, 256};
+    const float* ranges[] = {hueRanges, saturationRanges};
+    MatND dstHist;
+    int channels[] = {0, 1};
+    calcHist(&hsvImage,
+             1,
+             channels,
+             Mat(),
+             dstHist,
+             2,
+             histSize,
+             ranges,
+             true,
+             false);
+    double maxValue = 0;
+    minMaxLoc(dstHist, 0, &maxValue, 0, 0);
+    int scale = 10;
+    Mat histImg = Mat::zeros(saturationBinNum*scale, hueBinNum*scale, CV_8UC3);
+    for(int hue = 0; hue < hueBinNum; hue++)
+    {
+        for(int saturation = 0; saturation < saturationBinNum; saturation++)
+        {
+            float binValue = dstHist.at<float>(hue, saturation);
+            int intensity = cvRound(binValue*255/maxValue);
+            rectangle(histImg, Point(hue*scale, saturation*scale),
+                      Point((hue+1)*scale - 1, (saturation+1)*scale - 1),
+                      Scalar::all(intensity), FILLED);
+        }
+    }
+    result = histImg;
+}
+
+void OpenCvClass::calc1DHistImage()
+{
+    Mat srcImage = this->image;
+    srcImage = this->grayImage;
+    MatND dstHist;
+    int dims = 1;
+    float hranges[] = {0, 255};
+    const float* ranges[] = {hranges};
+    int size = 256;
+    int channels = 0;
+    calcHist(&srcImage, 1, &channels, Mat(), dstHist, dims, &size, ranges);
+    int scale = 1;
+    Mat dstImage(size*scale, size, CV_8U, Scalar(0));
+    double minValue = 0;
+    double maxValue = 0;
+    minMaxLoc(dstHist, &minValue, &maxValue, 0, 0);
+    int hpt = saturate_cast<int>(0.9 * size);
+    for(int i = 0; i < 256; i++)
+    {
+        float binValue = dstHist.at<float>(i);
+        int realValue = saturate_cast<int>(binValue*hpt/maxValue);
+        rectangle(dstImage, Point(i*scale, size-1), Point((i+1)*scale-1, size-realValue), Scalar(255));
+
+    }
+    result = dstImage;
+}
+
+void OpenCvClass::calc1D3CHistImage()
+{
+    Mat srcImage = this->image;
+    int bins = 256;
+    int hist_size[] = {bins};
+    float range[] = {0, 256};
+    const float* ranges[] = {range};
+    MatND redHist, greenHist, blueHist;
+    int channels_r[] = {0};
+    int channels_g[] = {1};
+    int channels_b[] = {2};
+    calcHist(&srcImage, 1, channels_r, Mat(), redHist, 1, hist_size, ranges, true, false);
+    calcHist(&srcImage, 1, channels_g, Mat(), greenHist, 1, hist_size, ranges, true, false);
+    calcHist(&srcImage, 1, channels_b, Mat(), blueHist, 1, hist_size, ranges, true, false);
+    double maxValue_red, maxValue_green, maxValue_blue;
+    minMaxLoc(redHist, 0, &maxValue_red, 0, 0);
+    minMaxLoc(greenHist, 0, &maxValue_green, 0, 0);
+    minMaxLoc(blueHist, 0, &maxValue_blue, 0, 0);
+    int scale = 1;
+    int histHeight = 256;
+    Mat histImage = Mat::zeros(histHeight, bins*3, CV_8UC3);
+    for(int i = 0; i < bins; i++)
+    {
+        float binValue_red = redHist.at<float>(i);
+        float binValue_green = greenHist.at<float>(i);
+        float binValue_blue = blueHist.at<float>(i);
+        int intensity_red = cvRound(binValue_red*histHeight/maxValue_red);
+        int intensity_green = cvRound(binValue_green*histHeight/maxValue_green);
+        int intensity_blue = cvRound(binValue_blue*histHeight/maxValue_blue);
+        rectangle(histImage, Point(i*scale, histHeight-1),
+                  Point((i+1)*scale-1, histHeight - intensity_red),
+                  Scalar(255, 0, 0));
+        rectangle(histImage, Point((i+bins)*scale, histHeight-1),
+                  Point((i+bins+1)*scale-1, histHeight - intensity_green),
+                  Scalar(0, 255, 0));
+        rectangle(histImage, Point((i+bins*2)*scale, histHeight-1),
+                  Point((i+bins*2+1)*scale-1, histHeight - intensity_blue),
+                  Scalar(0, 0, 255));
+    }
+    result = histImage;
+}
+
+void OpenCvClass::histogramCompare()
+{
+    string path = "images/book_resource_opencv3_programming_enter/";
+    string path_base = path + "chapter9_compare_base.jpg";
+    string path_compare0 = path + "chapter9_compare_compare0.jpg";
+    string path_compare1 = path + "chapter9_compare_compare1.jpg";
+    Mat srcImage_base, hsvImage_base;
+    Mat srcImage_compare0, hsvImage_compare0;
+    Mat srcImage_compare1, hsvImage_compare1;
+    Mat hsvImage_halfDown;
+    srcImage_base = imread(path_base);
+    srcImage_compare0 = imread(path_compare0);
+    srcImage_compare1 = imread(path_compare1);
+    imshow("base", srcImage_base);
+    imshow("compare0", srcImage_compare0);
+    imshow("compare1", srcImage_compare1);
+    cvtColor(srcImage_base, hsvImage_base, COLOR_BGR2HSV);
+    cvtColor(srcImage_compare0, hsvImage_compare0, COLOR_BGR2HSV);
+    cvtColor(srcImage_compare1, hsvImage_compare1, COLOR_BGR2HSV);
+    hsvImage_halfDown = hsvImage_base(Range(hsvImage_base.rows/2, hsvImage_base.rows-1),
+                                      Range(0, hsvImage_base.cols - 1));
+    int h_bins = 50; int s_bins = 60;
+    int histSize[] = {h_bins, s_bins};
+    float h_ranges[] = {0, 256};
+    float s_ranges[] = {0, 180};
+    const float* ranges[] = {h_ranges, s_ranges};
+    int channels[] = {0, 1};
+    MatND baseHist;
+    MatND halfDownHist;
+    MatND compare0Hist;
+    MatND compare1Hist;
+    calcHist(&hsvImage_base, 1, channels, Mat(),
+             baseHist, 2, histSize, ranges, true, false);
+    calcHist(&hsvImage_halfDown, 1, channels, Mat(),
+             halfDownHist, 2, histSize, ranges, true, false);
+    calcHist(&hsvImage_compare0, 1, channels, Mat(),
+             compare0Hist, 2, histSize, ranges, true, false);
+    calcHist(&hsvImage_compare1, 1, channels, Mat(),
+             compare1Hist, 2, histSize, ranges, true, false);
+    normalize(baseHist, baseHist, 0, 1, NORM_MINMAX, -1, Mat());
+    normalize(halfDownHist, halfDownHist, 0, 1, NORM_MINMAX, -1, Mat());
+    normalize(compare0Hist, compare0Hist, 0, 1, NORM_MINMAX, -1, Mat());
+    normalize(compare1Hist, compare1Hist, 0, 1, NORM_MINMAX, -1, Mat());
+    for(int i = 0; i < 4; i++)
+    {
+        int compare_method = i;
+        double base_base = compareHist(baseHist, baseHist, compare_method);
+        double base_half = compareHist(baseHist, halfDownHist, compare_method);
+        double base_compare0 = compareHist(baseHist, compare0Hist, compare_method);
+        double base_compare1 = compareHist(baseHist, compare1Hist, compare_method);
+        cout << i << "base-base: " << base_base << endl;
+        cout << i << "base-half: " << base_half << endl;
+        cout << i << "base-compare0: " << base_compare0 << endl;
+        cout << i << "base-compare1: " << base_compare1 << endl;
+    }
+    waitKey(1000);
+    destroyWindow("base");
+    destroyWindow("compare0");
+    destroyWindow("compare1");
+}
+
+void OpenCvClass::calcBackProjectImage()
+{
+    string path = "images/book_resource_opencv3_programming_enter/";
+    string path_image = path + "chapter9_calcBackProject_hand.jpg";
+    Mat srcImage = imread(path_image, 1);
+    Mat hsvImage, hueImage;
+    int bins = 30;
+    cvtColor(srcImage, hsvImage, COLOR_BGR2HSV);
+    cout << "type:" << hsvImage.type() << "depth:" << hsvImage.depth() << endl;
+    cout << "CV_8U: " << CV_8U << endl;
+    hueImage.create(hsvImage.size(), CV_8UC1);
+    cout << "type:" << hueImage.type() << "depth:" << hueImage.depth() << endl;
+    int ch[] = {0, 0};
+    mixChannels(&hsvImage, 1, &hueImage, 1, ch, 1);
+    MatND hist;
+    int histSize = MAX(bins, 2);
+    float hue_range[] = {0, 180};
+    const float* ranges = {hue_range};
+    calcHist(&hueImage, 1, 0, Mat(), hist, 1, &histSize, &ranges, true, false);
+    normalize(hist, hist, 0, 255, NORM_MINMAX, -1, Mat());
+    MatND backproj;
+    calcBackProject(&hueImage, 1, 0, hist, backproj, &ranges, 1, true);
+    imshow("hueImage", hueImage);
+
+    // show the histogram image
+    int w = 400; int h = 400;
+    int bin_w = cvRound((double)w / histSize);
+    Mat histImg = Mat::zeros(h, w, CV_8UC3);
+    for(int i = 0; i < bins; i++)
+    {
+        rectangle(histImg, Point(i*bin_w, h),
+                  Point((i+1)*bin_w, h-cvRound(hist.at<float>(i)*h/255.0)),
+                  Scalar(100, 123, 255), -1);
+    }
+    imshow("histogram", histImg);
+
+    result = backproj;
+}
+
+void OpenCvClass::matchTemplateImage()
+{
+    string path = "images/book_resource_opencv3_programming_enter/";
+    string path_image = path + "chapter9_matchTemplate_image.jpg";
+    string path_templ = path + "chapter9_matchTemplate_templ.jpg";
+    Mat image = imread(path_image);
+    Mat templ = imread(path_templ);
+    Mat resultImage;
+    int resultImage_cols = image.cols - templ.cols + 1;
+    int resultImage_rows = image.rows - templ.rows + 1;
+    resultImage.create(resultImage_cols, resultImage_rows, CV_32FC1);
+    int method = TM_SQDIFF;
+    matchTemplate(image, templ, resultImage, method);
+    Mat normalizeImage;
+    normalize(resultImage, normalizeImage, 0, 1, NORM_MINMAX, -1, Mat());
+    double minValue, maxValue;
+    Point minLocation, maxLocation, matchLocation;
+    minMaxLoc(normalizeImage, &minValue, &maxValue, &minLocation, &maxLocation, Mat());
+    if(method == TM_SQDIFF || method == TM_SQDIFF_NORMED)
+    {
+        matchLocation = minLocation;
+    }
+    else
+    {
+        matchLocation = maxLocation;
+    }
+    rectangle(image, matchLocation, Point(matchLocation.x + templ.cols,
+                                         matchLocation.y + templ.rows),
+              Scalar(0, 0, 255), 2, 8, 0);
+    rectangle(normalizeImage, matchLocation, Point(matchLocation.x + templ.cols,
+                                         matchLocation.y + templ.rows),
+              Scalar(0, 0, 255), 2, 8, 0);
+
+    imshow("rsult", resultImage);
+    imshow("nor", normalizeImage);
+    result = image;
+}
 void OpenCvClass::cannyImage()
 {
     result.create(image.size(), image.type());

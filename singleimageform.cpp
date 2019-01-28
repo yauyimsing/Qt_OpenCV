@@ -157,8 +157,36 @@ void SingleImageForm::on_comboBox_1_currentIndexChanged(const QString &arg1)
     }
     else if(arg1 == "convex")
     {
-        opencv.convexHullImage();
+        ui->comboBox_2->addItem("convex hull");
+        ui->comboBox_2->addItem("min area rect");
+        ui->comboBox_2->addItem("min enclosing circle");
+        ui->comboBox_2->addItem("moments");
+    }
+    else if(arg1 == "watershed")
+    {
+        opencv.watershedImage();
         *imageLabel << opencv.getResult();
+    }
+    else if(arg1 == "histogram")
+    {
+        ui->comboBox_2->addItem("H-S 2D histogram");
+        ui->comboBox_2->addItem("1D-single channels histogram");
+        ui->comboBox_2->addItem("1D-3 channels histogram");
+        ui->comboBox_2->addItem("histogram compare");
+    }
+    else if(arg1 == "calcBackProject")
+    {
+        ui->comboBox_2->addItem("calcBackProject");
+        ui->comboBox_2->addItem("1D-single channels histogram");
+        ui->comboBox_2->addItem("1D-3 channels histogram");
+        ui->comboBox_2->addItem("histogram compare");
+    }
+    else if(arg1 == "match template")
+    {
+        ui->comboBox_2->addItem("match template");
+        ui->comboBox_2->addItem("1D-single channels histogram");
+        ui->comboBox_2->addItem("1D-3 channels histogram");
+        ui->comboBox_2->addItem("histogram compare");
     }
 }
 
@@ -293,6 +321,70 @@ void SingleImageForm::on_comboBox_2_currentIndexChanged(const QString &arg1)
         else if(arg1 == "scharr")
         {
             opencv.scharr();
+        }
+        *imageLabel << opencv.getResult();
+    }
+    else if(ui->comboBox_1->currentText() == "convex")
+    {
+        if(arg1 == "convex hull")
+        {
+            opencv.convexHullImage();
+            *imageLabel << opencv.getResult();
+        }
+        else if(arg1 == "min area rect")
+        {
+            opencv.minAreaRectImage();
+        }
+        else if(arg1 == "min enclosing circle")
+        {
+            opencv.minEnclosingCircleImage();
+        }
+        else if(arg1 == "moments")
+        {
+            opencv.momentImage();
+        }
+        *imageLabel << opencv.getResult();
+    }
+    else if(ui->comboBox_1->currentText() == "histogram")
+    {
+        if(arg1 == "H-S 2D histogram")
+        {
+            opencv.calcHS2DHistImage();
+            *imageLabel << opencv.getResult();
+        }
+        else if(arg1 == "1D-single channels histogram")
+        {
+            opencv.calc1DHistImage();
+        }
+        else if(arg1 == "1D-3 channels histogram")
+        {
+            opencv.calc1D3CHistImage();
+        }
+        else if(arg1 == "histogram compare")
+        {
+            opencv.histogramCompare();
+        }
+        *imageLabel << opencv.getResult();
+    }
+    else if(ui->comboBox_1->currentText() == "calcBackProject")
+    {
+        if(arg1 == "calcBackProject")
+        {
+            opencv.calcBackProjectImage();
+            *imageLabel << opencv.getResult();
+        }
+        else if(arg1 == "1D-single channels histogram")
+        {
+            opencv.calc1DHistImage();
+        }
+        *imageLabel << opencv.getResult();
+    }
+    else if(ui->comboBox_1->currentText() == "match template")
+    {
+        if(arg1 == "match template")
+        {
+            opencv.matchTemplateImage();
+            *imageLabel << opencv.getResult();
         }
         *imageLabel << opencv.getResult();
     }

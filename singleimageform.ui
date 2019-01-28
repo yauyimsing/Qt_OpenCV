@@ -130,6 +130,26 @@
              <string>convex</string>
             </property>
            </item>
+           <item>
+            <property name="text">
+             <string>watershed</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>histogram</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>calcBackProject</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>match template</string>
+            </property>
+           </item>
           </widget>
          </item>
          <item>

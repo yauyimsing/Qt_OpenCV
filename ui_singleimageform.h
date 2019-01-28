@@ -125,6 +125,10 @@ public:
          << QApplication::translate("SingleImageForm", "equalize histogram", 0)
          << QApplication::translate("SingleImageForm", "contours", 0)
          << QApplication::translate("SingleImageForm", "convex", 0)
+         << QApplication::translate("SingleImageForm", "watershed", 0)
+         << QApplication::translate("SingleImageForm", "histogram", 0)
+         << QApplication::translate("SingleImageForm", "calcBackProject", 0)
+         << QApplication::translate("SingleImageForm", "match template", 0)
         );
         pushButton_2->setText(QApplication::translate("SingleImageForm", "PushButton", 0));
     } // retranslateUi

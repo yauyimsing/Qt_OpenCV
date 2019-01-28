@@ -84,6 +84,16 @@ public:
     void getGrayImage();
     void contoursImage();
     void convexHullImage();
+    void minAreaRectImage();
+    void minEnclosingCircleImage();
+    void momentImage();
+    void watershedImage();
+    void calcHS2DHistImage();
+    void calc1DHistImage();
+    void calc1D3CHistImage();
+    void histogramCompare();
+    void calcBackProjectImage();
+    void matchTemplateImage();
 };
 
 #endif // OPENCVCLASS_H
