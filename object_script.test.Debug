@@ -16,6 +16,7 @@ INPUT(
 ./debug\eventlineedit.o
 ./debug\testform.o
 ./debug\singleimageform.o
+./debug\command.o
 ./debug\qrc_imageResource.o
 ./debug\moc_qtform.o
 ./debug\moc_mainwindow.o

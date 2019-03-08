@@ -12,6 +12,7 @@
 #include <QDebug>
 #include "testform.h"
 #include "singleimageform.h"
+#include "command.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -100,6 +101,8 @@ void MainWindow::getCommand(const QString &string)
     QByteArray ba = string.toLatin1(); // must
     ch=ba.data();
     cout << ch << endl;
+    Command cmd;
+    cmd.Task(this);
 }
 
 void MainWindow::on_actionTestForm_triggered()

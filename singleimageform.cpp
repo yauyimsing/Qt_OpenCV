@@ -21,7 +21,7 @@ void SingleImageForm::initilize()
 {
     cout << "ini" << endl;
     imageLabel = new ImageLabel(this);
-    imageLabel->imageRead("D:\\picture\\en.jpg");
+    imageLabel->imageRead("images/en.jpg");
     //ui->formLayoutImage->addWidget(imageLabel);
     ui->gridLayoutImage_2->addWidget(imageLabel, 0, 0, 1, 1);
     opencv.LoadPicture();

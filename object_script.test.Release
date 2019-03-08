@@ -16,6 +16,7 @@ INPUT(
 ./release\eventlineedit.o
 ./release\testform.o
 ./release\singleimageform.o
+./release\command.o
 ./release\qrc_imageResource.o
 ./release\moc_qtform.o
 ./release\moc_mainwindow.o

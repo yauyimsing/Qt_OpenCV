@@ -26,7 +26,8 @@ SOURCES += main.cpp \
     contentfinder.cpp \
     eventlineedit.cpp \
     testform.cpp \
-    singleimageform.cpp
+    singleimageform.cpp \
+    command.cpp
 
 INCLUDEPATH += D:\temp\opencv_mingw\install\include \
                     D:\work\qt\LibraryStatic0 \
@@ -68,7 +69,8 @@ HEADERS += \
     eventlineedit.h \
     testform.h \
     ui_testform.h \
-    singleimageform.h
+    singleimageform.h \
+    command.h
 
 RESOURCES += \
     imageResource.qrc
