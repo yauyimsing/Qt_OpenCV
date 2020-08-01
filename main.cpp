@@ -7,8 +7,6 @@
 #include <QLabel>
 #include <iostream>
 #include <opencv2/opencv.hpp>
-#include <librarystatic0.h>
-#include "library0.h"
 #include "qtform.h"
 #include "mainwindow.h"
 #include "test.h"
@@ -27,8 +25,6 @@ int main(int argc, char *argv[])
 
     MainWindow w;
     w.show();
-    LibraryStatic0 l;
-    cout << l.StaticAdd(8, 8) << endl;
     for(int i = 0; i < 10; ++i)
     {
         cout << i << endl;
@@ -44,8 +40,6 @@ void initilize()
 {    int a = 4;
      int b = 1;
      int c = 121;
-     LibraryStatic0 lib0;
-     c = lib0.StaticAdd(a,b);
 
      cout << "start..." << "c: " << c << endl;
  /*

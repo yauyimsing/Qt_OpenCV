@@ -32,7 +32,7 @@ void ViewForm::initilize()
     mouseMovePoint = QPoint(0, 0);
     mouseUpPoint = QPoint(0, 0);
 
-    imageLabel->imageRead("D:\\picture\\en.jpg");
+    imageLabel->imageRead("ee.jpg");
     ui->gridLayoutImage->addWidget(imageLabel, 0, 0, 1, 1);
     imshow("origin", imageLabel->getImage());
 }
@@ -56,7 +56,7 @@ void ViewForm::imageRead(string filename)
 
 bool ViewForm::eventFilter(QObject *watched, QEvent *event)
 {
-
+    return true;
 }
 
 

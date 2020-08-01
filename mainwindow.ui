@@ -26,7 +26,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>29</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile_F">
@@ -78,7 +78,7 @@
   </widget>
   <action name="actionNew_N">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="imageResource.qrc">
      <normaloff>:/picture/images/png/face.png</normaloff>:/picture/images/png/face.png</iconset>
    </property>
    <property name="text">
@@ -120,7 +120,7 @@
   </action>
  </widget>
  <resources>
-  <include location="images.qrc"/>
+  <include location="imageResource.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -44,8 +44,7 @@ void ColorDetectController::getTargetColor(unsigned char &red, unsigned char &gr
     green = color[1];
     blue = color[0];
 }
-
-bool ColorDetectController::setInputImage(std::__cxx11::string filename, int flags)
+bool ColorDetectController::setInputImage(std::string filename, int flags)
 {
     image = imread(filename, flags);
     if(!image.data)

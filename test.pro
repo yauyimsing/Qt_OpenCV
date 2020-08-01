@@ -29,13 +29,27 @@ SOURCES += main.cpp \
     singleimageform.cpp \
     command.cpp
 
-INCLUDEPATH += D:\temp\opencv_mingw\install\include \
-                    D:\work\qt\LibraryStatic0 \
-                    D:\work\qt\library0 \
+INCLUDEPATH += E:\OpenCV\opencv_3_4_1_build_x64\install\include \
                     $$PWD\include
 
-LIBS += D:\work\qt\LibraryStatic0\debug\libLibra*.a \
-        D:\temp\opencv_mingw\install\x86\mingw\bin\libopencv_*.dll \
+LIBS += -LE:\OpenCV\opencv_3_4_1_build_x64\install\x64\vc12\lib \
+    -lopencv_core341d \
+    -lopencv_imgproc341d \
+    -lopencv_highgui341d \
+    -lopencv_ml341d \
+    -lopencv_video341d \
+    -lopencv_features2d341d \
+    -lopencv_calib3d341d \
+    -lopencv_objdetect341d \
+    -lopencv_dnn341d \
+    -lopencv_flann341d \
+    -lopencv_imgcodecs341d \
+    -lopencv_photo341d \
+    -lopencv_shape341d \
+    -lopencv_stitching341d \
+    -lopencv_superres341d \
+    -lopencv_videoio341d \
+    -lopencv_videostab341d
 
 
 RC_ICONS = opencv.ico

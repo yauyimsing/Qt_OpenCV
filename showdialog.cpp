@@ -13,7 +13,7 @@ ShowDialog::ShowDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &timerUpdate);
+    connect(timer, &QTimer::timeout, this, &ShowDialog::timerUpdate);
     timer->start(1000);
     initLayout();
 }

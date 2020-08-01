@@ -85,8 +85,11 @@ void MainWindow::on_actionDialog_triggered()
 
 void MainWindow::on_actionViewForm_triggered()
 {
+    cout << "on_actionViewForm_triggered" << endl;
     ViewForm* viewForm = new ViewForm(this);
-    viewForm->imageRead("D:\\picture\\en.jpg");
+    cout << "ViewForm";
+    viewForm->imageRead("ee.jpg");
+    qDebug() << "imageRead";
     int height = viewForm->height();
     int width = viewForm->width();
     QMdiSubWindow* child = ui->mdiArea->addSubWindow(viewForm);

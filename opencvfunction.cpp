@@ -173,7 +173,7 @@ namespace opencvfun
 
     Mat getProbilityMat(const Mat &image)
     {
-
+        return image;
     }
 
 }

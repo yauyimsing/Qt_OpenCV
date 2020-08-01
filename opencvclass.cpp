@@ -18,6 +18,7 @@ bool OpenCvClass::checkImage()
         image = Mat(100, 100, CV_8UC3, Scalar(255, 0, 0));
         cout << "image empty" << endl;
     }
+    return true;
 }
 
 void OpenCvClass::createAlphaMat(Mat &mat)

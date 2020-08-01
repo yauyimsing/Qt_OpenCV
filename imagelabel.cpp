@@ -191,6 +191,7 @@ ImageLabel& ImageLabel::operator<<(Mat &image)
 
 ImageLabel &ImageLabel::operator<<(QString text)
 {
+    return *this;
 }
 
 void ImageLabel::showImage(Mat &image)
